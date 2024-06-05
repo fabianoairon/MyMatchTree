@@ -13,11 +13,12 @@ public class Board : MonoBehaviour
     private int _width;
     [SerializeField]
     private int _height;
-    [SerializeField]
-    private GameObject _cellPrefab;
+
 
     private Cell[,] _allCells;
 
+    [SerializeField]
+    private CellPlacer _cellPlacer;
     [SerializeField]
     private Swapper _swapper;
     [SerializeField]
@@ -32,6 +33,7 @@ public class Board : MonoBehaviour
     private Filler _filler;
 
 
+
     [SerializeField]
     private float _swapPieceDuration;
     [SerializeField]
@@ -42,23 +44,8 @@ public class Board : MonoBehaviour
     private void Start()
     {
         _allCells = new Cell[_width, _height];
-        GenerateCellGrid();
+        _cellPlacer.GenerateCellGrid(this);
         _filler.FillWithRandomPiece(this);
-    }
-
-    private void GenerateCellGrid()
-    {
-        for (int x = 0; x < _width; x++)
-        {
-            for (int y = 0; y < _height; y++)
-            {
-                GameObject instantiatedCell = Instantiate(_cellPrefab, new Vector3(x, y, 0f), Quaternion.identity);
-                Cell cell = instantiatedCell.GetComponent<Cell>();
-                _allCells[x, y] = cell;
-                cell.Setup(x, y, this);
-                instantiatedCell.transform.parent = transform;
-            }
-        }
     }
 
 
@@ -199,7 +186,7 @@ public class Board : MonoBehaviour
     public void HightlightPieceOff(Piece piece)
     {
         SpriteRenderer cellRenderer = piece.GetCell().GetComponent<SpriteRenderer>();
-        cellRenderer.color = new Color(0f, 0f, 0f, 0f);
+        cellRenderer.color = new Color(1f, 1f, 1f, 0.017f);
     }
 
     public void HighlightPieces(List<Piece> pieces)

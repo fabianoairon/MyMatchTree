@@ -7,9 +7,11 @@ public class Cell : MonoBehaviour
 
     private Board _board;
     private Piece _piece;
+    private CellType _cellType;
 
-    public void Setup(int x, int y, Board board)
+    public void Setup(int x, int y, Board board, CellType cellType)
     {
+        _cellType = cellType;
         _xCoordinate = x;
         _yCoordinate = y;
         _board = board;
@@ -64,5 +66,10 @@ public class Cell : MonoBehaviour
     public Piece GetPiece()
     {
         return _piece;
+    }
+
+    public CellType GetCellType()
+    {
+        return _cellType;
     }
 }

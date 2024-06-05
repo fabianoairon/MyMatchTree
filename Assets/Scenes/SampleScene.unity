@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 34405904}
   - component: {fileID: 34405907}
   - component: {fileID: 34405908}
+  - component: {fileID: 34405909}
   - component: {fileID: 34405903}
   m_Layer: 0
   m_Name: BoardManager
@@ -171,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _width: 7
   _height: 9
-  _cellPrefab: {fileID: 5956901734874926282, guid: f840fae7ddb006346b28d146c4c450d7, type: 3}
+  _cellPlacer: {fileID: 34405909}
   _swapper: {fileID: 34405906}
   _piecePlacer: {fileID: 34405903}
   _clearer: {fileID: 34405905}
@@ -259,6 +260,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee8efe99dae0b342a8da6b5bd817b58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &34405909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34405900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb7a71556106744cbfccf9010d8713f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cellSO:
+  - {fileID: 11400000, guid: 82f0bacce5285c242839418bd6b22fec, type: 2}
+  - {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+  - {fileID: 11400000, guid: b311ca3550f9ff34880faf8b9dd4d1ca, type: 2}
 --- !u!1 &162666056
 GameObject:
   m_ObjectHideFlags: 0
@@ -631,7 +648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

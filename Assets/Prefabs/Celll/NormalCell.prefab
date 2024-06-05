@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8359944080199827775}
   - component: {fileID: 8500490272709706839}
   m_Layer: 0
-  m_Name: Cell
+  m_Name: NormalCell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6eab8888b1fbd574fac2c307766be01c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.019607844}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

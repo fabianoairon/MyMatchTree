@@ -17,6 +17,7 @@ public class PiecePlacer : MonoBehaviour
         if (board.IsWithinBounds((int)cell.GetCoordinate().x, (int)cell.GetCoordinate().y))
         {
             cell.SetPiece(piece);
+            board.HightlightPieceOff(piece);
         }
     }
 
@@ -44,7 +45,8 @@ public class PiecePlacer : MonoBehaviour
         int randomIndex = Random.Range(0, _piecesSO.Length);
 
         GameObject piecePrefab = Instantiate(_piecesSO[randomIndex]._piecePrefab);
-        piecePrefab.GetComponent<Piece>().SetPieceColor(_piecesSO[randomIndex]._pieceColor);
+        Piece piece = piecePrefab.GetComponent<Piece>();
+        piece.SetPieceColor(_piecesSO[randomIndex]._pieceColor);
 
         return piecePrefab;
     }
