@@ -5,8 +5,6 @@ public class PiecePlacer : MonoBehaviour
     [SerializeField]
     private PieceSO[] _piecesSO;
 
-
-
     public void PlacePieceAt(Board board, Cell cell, Piece piece)
     {
 

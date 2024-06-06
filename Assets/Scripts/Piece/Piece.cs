@@ -4,11 +4,8 @@ using UnityEngine;
 public class Piece : MonoBehaviour
 {
     private bool _isMoving = false;
-
     private Cell _cell;
-
     private PieceColor _pieceColor;
-
 
     public void Move(Vector3 destination, MoveType moveType)
     {

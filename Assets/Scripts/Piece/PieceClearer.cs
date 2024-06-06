@@ -25,6 +25,7 @@ public class PieceClearer : MonoBehaviour
 
         board.GetClearer().ClearPieceAt(pieces);
         board.GetCellPlacer().BreakBreakableCells(pieces);
+
         yield return new WaitForSeconds(0.25f);
     }
 }

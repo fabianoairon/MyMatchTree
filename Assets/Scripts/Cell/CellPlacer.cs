@@ -9,7 +9,7 @@ public class CellPlacer : MonoBehaviour
     private CellSO[] _cellSO;
 
     [SerializeField]
-    private StartingCells[] _startingCells;
+    private StartingCell[] _startingCells;
 
     [SerializeField]
     private Sprite[] _breakableSprites;
@@ -41,7 +41,7 @@ public class CellPlacer : MonoBehaviour
         }
     }
 
-    public Cell PlaceCell(Board board, int x, int y, CellType cellType)
+    public Cell PlaceCell(Board board, int x, int y, CellType cellType, int initialValue = 0)
     {
         CellSO cellSO = _cellSO.First(cell => cell._cellType == cellType);
 
@@ -49,21 +49,24 @@ public class CellPlacer : MonoBehaviour
         Cell cell = instantiatedCell.GetComponent<Cell>();
 
         board.GetCellGrid()[x, y] = cell;
-        cell.Setup(x, y, board, cellType);
+        cell.Setup(x, y, board, cellType, initialValue);
 
         instantiatedCell.transform.parent = transform;
         return cell;
     }
 
-    private void StartingCellsGenerator(Board board, StartingCells[] startingCells)
+    public Cell PlaceCell(Board board, StartingCell startingCell)
+    {
+        return PlaceCell(board, startingCell._x, startingCell._y, startingCell._cellType, startingCell._initialBreakablePhase);
+    }
+
+    private void StartingCellsGenerator(Board board, StartingCell[] startingCells)
     {
         foreach (var singleCell in startingCells)
         {
-            Cell cell = PlaceCell(board, singleCell.x, singleCell.y, singleCell._cellType);
-
-            if (cell is BreakableCell bcell)
+            if (board.GetCellGrid()[singleCell._x, singleCell._y] == null)
             {
-                bcell.SetPhase(singleCell.initialBreakablePhase);
+                PlaceCell(board, singleCell);
             }
         }
     }

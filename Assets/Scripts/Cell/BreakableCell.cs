@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class BreakableCell : Cell
 {
-    private int currentBreakablePhase;
+    private int _currentBreakablePhase;
 
     public void BreakCell()
     {
-        if (currentBreakablePhase > 1)
+        if (_currentBreakablePhase > 1)
         {
-            --currentBreakablePhase;
-            ChangeSprite(currentBreakablePhase);
+            --_currentBreakablePhase;
+            ChangeSprite(_currentBreakablePhase);
         }
         else
         {
@@ -27,7 +27,15 @@ public class BreakableCell : Cell
 
     public void SetPhase(int phase)
     {
-        currentBreakablePhase = phase;
+        phase = phase == 0 ? 1 : phase;
+
+        _currentBreakablePhase = phase;
         ChangeSprite(phase);
+    }
+
+    public override void Setup(int x, int y, Board board, CellType cellType, int initialValue)
+    {
+        base.Setup(x, y, board, cellType);
+        SetPhase(initialValue);
     }
 }

@@ -13,7 +13,7 @@ public class PieceCollapser : MonoBehaviour
 
         for (int i = 0; i < board.GetHeight() - 1; i++)
         {
-            if (cellGrid[column, i].GetPiece() == null)
+            if (cellGrid[column, i].GetPiece() == null && cellGrid[column, i].GetCellType() != CellType.OBSTACLE)
             {
                 for (int j = i + 1; j < board.GetHeight(); j++)
                 {

@@ -13,9 +13,10 @@ public class PieceFiller : MonoBehaviour
         {
             for (int y = 0; y < board.GetHeight(); y++)
             {
-                if (board.GetCellGrid()[x, y].GetPiece() == null)
+                Cell cell = board.GetCellGrid()[x, y];
+
+                if (board.GetCellGrid()[x, y].GetPiece() == null && cell.GetCellType() != CellType.OBSTACLE)
                 {
-                    Cell cell = board.GetCellGrid()[x, y];
                     Piece piece = board.GetPiecePlacer().PlaceRandomPieceAt(board, cell);
 
                     if (yOffset == 0)

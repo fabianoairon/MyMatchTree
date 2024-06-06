@@ -17,7 +17,6 @@ public class Board : MonoBehaviour
     [SerializeField]
     private int _height;
 
-
     private Cell[,] _allCells;
 
     [SerializeField]
@@ -36,8 +35,6 @@ public class Board : MonoBehaviour
     [SerializeField]
     private PieceFiller _filler;
 
-
-
     [SerializeField]
     private float _swapPieceDuration;
     [SerializeField]
@@ -45,20 +42,11 @@ public class Board : MonoBehaviour
     [SerializeField]
     private float _refillPieceDuration;
 
-
-
     private void Start()
     {
         _allCells = new Cell[_width, _height];
         _cellPlacer.GenerateCellGrid(this);
         _filler.FillWithRandomPiece(this);
-    }
-
-
-
-    public int GetColumn(Piece piece)
-    {
-        return piece.GetX();
     }
 
     public List<int> GetColumns(List<Piece> pieces)
@@ -83,13 +71,6 @@ public class Board : MonoBehaviour
         return x >= 0 && x < _width && y >= 0 && y < _height;
     }
 
-
-
-    private int GetYDistanceBetween(Vector3 start, Vector3 end)
-    {
-        return Mathf.Abs((int)start.y - (int)end.y);
-    }
-
     public float GetMoveDuration(MoveType moveType, Vector3 start, Vector3 end)
     {
         switch (moveType)
@@ -103,36 +84,6 @@ public class Board : MonoBehaviour
             default:
                 return 0.01f;
         }
-    }
-
-    public PiecePlacer GetPiecePlacer()
-    {
-        return _piecePlacer;
-    }
-
-    public PieceClearer GetClearer()
-    {
-        return _clearer;
-    }
-
-    public PieceCollapser GetCollapser()
-    {
-        return _collapser;
-    }
-
-    public PieceSwapper GetSwapper()
-    {
-        return _swapper;
-    }
-
-    public PieceMatcher GetMatcher()
-    {
-        return _matcher;
-    }
-
-    public CellPlacer GetCellPlacer()
-    {
-        return _cellPlacer;
     }
 
     public void ClearCollapseRefillMatch(List<Piece> pieces)
@@ -170,6 +121,11 @@ public class Board : MonoBehaviour
         targetList = targetList.Union(sourceList).ToList();
     }
 
+    public int GetColumn(Piece piece)
+    {
+        return piece.GetX();
+    }
+
     public int GetWidth()
     {
         return _width;
@@ -185,7 +141,40 @@ public class Board : MonoBehaviour
         return _allCells;
     }
 
+    private int GetYDistanceBetween(Vector3 start, Vector3 end)
+    {
+        return Mathf.Abs((int)start.y - (int)end.y);
+    }
 
+    public PiecePlacer GetPiecePlacer()
+    {
+        return _piecePlacer;
+    }
+
+    public PieceClearer GetClearer()
+    {
+        return _clearer;
+    }
+
+    public PieceCollapser GetCollapser()
+    {
+        return _collapser;
+    }
+
+    public PieceSwapper GetSwapper()
+    {
+        return _swapper;
+    }
+
+    public PieceMatcher GetMatcher()
+    {
+        return _matcher;
+    }
+
+    public CellPlacer GetCellPlacer()
+    {
+        return _cellPlacer;
+    }
 
     private void HightlightPiece(Piece piece)
     {

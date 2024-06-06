@@ -9,7 +9,7 @@ public class Cell : MonoBehaviour
     private Piece _piece;
     private CellType _cellType;
 
-    public void Setup(int x, int y, Board board, CellType cellType)
+    public virtual void Setup(int x, int y, Board board, CellType cellType, int initialValue = 0)
     {
         _cellType = cellType;
         _xCoordinate = x;
