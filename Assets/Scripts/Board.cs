@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Collections;
 using System.Linq;
 
-[RequireComponent(typeof(Swapper))]
-[RequireComponent(typeof(Clearer))]
-[RequireComponent(typeof(Collapser))]
+[RequireComponent(typeof(PieceSwapper))]
+[RequireComponent(typeof(PieceClearer))]
+[RequireComponent(typeof(PieceCollapser))]
 [RequireComponent(typeof(PiecePlacer))]
+[RequireComponent(typeof(PieceMatcher))]
+[RequireComponent(typeof(PieceFiller))]
+[RequireComponent(typeof(CellPlacer))]
 public class Board : MonoBehaviour
 {
     [SerializeField]
@@ -19,18 +22,19 @@ public class Board : MonoBehaviour
 
     [SerializeField]
     private CellPlacer _cellPlacer;
+
     [SerializeField]
-    private Swapper _swapper;
+    private PieceSwapper _swapper;
     [SerializeField]
     private PiecePlacer _piecePlacer;
     [SerializeField]
-    private Clearer _clearer;
+    private PieceClearer _clearer;
     [SerializeField]
-    private Collapser _collapser;
+    private PieceCollapser _collapser;
     [SerializeField]
-    private Matcher _matcher;
+    private PieceMatcher _matcher;
     [SerializeField]
-    private Filler _filler;
+    private PieceFiller _filler;
 
 
 
@@ -40,6 +44,8 @@ public class Board : MonoBehaviour
     private float _collapsePieceDuration;
     [SerializeField]
     private float _refillPieceDuration;
+
+
 
     private void Start()
     {
@@ -104,24 +110,29 @@ public class Board : MonoBehaviour
         return _piecePlacer;
     }
 
-    public Clearer GetClearer()
+    public PieceClearer GetClearer()
     {
         return _clearer;
     }
 
-    public Collapser GetCollapser()
+    public PieceCollapser GetCollapser()
     {
         return _collapser;
     }
 
-    public Swapper GetSwapper()
+    public PieceSwapper GetSwapper()
     {
         return _swapper;
     }
 
-    public Matcher GetMatcher()
+    public PieceMatcher GetMatcher()
     {
         return _matcher;
+    }
+
+    public CellPlacer GetCellPlacer()
+    {
+        return _cellPlacer;
     }
 
     public void ClearCollapseRefillMatch(List<Piece> pieces)
@@ -174,6 +185,8 @@ public class Board : MonoBehaviour
         return _allCells;
     }
 
+
+
     private void HightlightPiece(Piece piece)
     {
         if (piece == null) return;
@@ -185,8 +198,13 @@ public class Board : MonoBehaviour
 
     public void HightlightPieceOff(Piece piece)
     {
-        SpriteRenderer cellRenderer = piece.GetCell().GetComponent<SpriteRenderer>();
-        cellRenderer.color = new Color(1f, 1f, 1f, 0.017f);
+        Cell cell = piece.GetCell();
+
+        if (cell.GetCellType() == CellType.NORMAL)
+        {
+            SpriteRenderer cellRenderer = cell.GetComponent<SpriteRenderer>();
+            cellRenderer.color = _cellPlacer.GetNormalCellColor();
+        }
     }
 
     public void HighlightPieces(List<Piece> pieces)

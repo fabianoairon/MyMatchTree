@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Matcher : MonoBehaviour
+public class PieceMatcher : MonoBehaviour
 {
 
     private List<Piece> FindMatches(Board board, int startX, int startY, Vector2 direction, int minCount = 3)

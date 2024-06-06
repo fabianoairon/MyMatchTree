@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Clearer : MonoBehaviour
+public class PieceClearer : MonoBehaviour
 {
 
     public void ClearPieceAt(Cell cell)
@@ -24,7 +24,7 @@ public class Clearer : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         board.GetClearer().ClearPieceAt(pieces);
-
+        board.GetCellPlacer().BreakBreakableCells(pieces);
         yield return new WaitForSeconds(0.25f);
     }
 }

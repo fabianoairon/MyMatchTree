@@ -129,13 +129,13 @@ GameObject:
   m_Component:
   - component: {fileID: 34405901}
   - component: {fileID: 34405902}
+  - component: {fileID: 34405909}
+  - component: {fileID: 34405903}
   - component: {fileID: 34405906}
   - component: {fileID: 34405905}
   - component: {fileID: 34405904}
   - component: {fileID: 34405907}
   - component: {fileID: 34405908}
-  - component: {fileID: 34405909}
-  - component: {fileID: 34405903}
   m_Layer: 0
   m_Name: BoardManager
   m_TagString: Untagged
@@ -276,6 +276,84 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 82f0bacce5285c242839418bd6b22fec, type: 2}
   - {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
   - {fileID: 11400000, guid: b311ca3550f9ff34880faf8b9dd4d1ca, type: 2}
+  _startingCells:
+  - _cellType: 1
+    x: 0
+    y: 0
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 0
+    y: 1
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 0
+    y: 2
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 0
+    y: 3
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 0
+    y: 4
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 0
+    y: 5
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 0
+    y: 6
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 0
+    y: 7
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 0
+    y: 8
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 8
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 7
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 6
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 5
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 4
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 3
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 2
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 1
+    initialBreakablePhase: 2
+  - _cellType: 1
+    x: 1
+    y: 0
+    initialBreakablePhase: 2
+  _breakableSprites:
+  - {fileID: 21300000, guid: 93738ed3cc1a56748a4472fdc2aecb83, type: 3}
+  - {fileID: 21300000, guid: 899a92a95b73ccc4aa2c8c2602331e06, type: 3}
+  _normalCellColor: {r: 1, g: 1, b: 1, a: 0.017}
+  _breakableCellColor: {r: 1, g: 1, b: 1, a: 0.05882353}
 --- !u!1 &162666056
 GameObject:
   m_ObjectHideFlags: 0

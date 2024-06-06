@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Filler : MonoBehaviour
+public class PieceFiller : MonoBehaviour
 {
     public List<Piece> FillWithRandomPiece(Board board, int yOffset = 0)
     {
@@ -17,7 +17,6 @@ public class Filler : MonoBehaviour
                 {
                     Cell cell = board.GetCellGrid()[x, y];
                     Piece piece = board.GetPiecePlacer().PlaceRandomPieceAt(board, cell);
-
 
                     if (yOffset == 0)
                     {

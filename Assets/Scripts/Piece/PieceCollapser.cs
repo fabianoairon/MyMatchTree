@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Collapser : MonoBehaviour
+public class PieceCollapser : MonoBehaviour
 {
     private List<Piece> CollapseColumn(Board board, int column)
     {

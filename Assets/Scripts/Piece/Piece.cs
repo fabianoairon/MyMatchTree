@@ -6,7 +6,6 @@ public class Piece : MonoBehaviour
     private bool _isMoving = false;
 
     private Cell _cell;
-    private Board _board;
 
     private PieceColor _pieceColor;
 
@@ -25,7 +24,7 @@ public class Piece : MonoBehaviour
         float currentTime = 0;
         Vector3 initialPosition = transform.position;
 
-        float moveDuration = _board.GetMoveDuration(moveType, initialPosition, destination);
+        float moveDuration = _cell.GetBoard().GetMoveDuration(moveType, initialPosition, destination);
 
 
         _isMoving = true;
@@ -33,7 +32,7 @@ public class Piece : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, destination) < 0.01f || moveType == MoveType.INSTANT)
             {
-                _board.GetPiecePlacer().PlacePieceAt(_board, (int)destination.x, (int)destination.y, this);
+                _cell.GetBoard().GetPiecePlacer().PlacePieceAt(_cell.GetBoard(), (int)destination.x, (int)destination.y, this);
                 isInDestination = true;
             }
             else
@@ -64,11 +63,6 @@ public class Piece : MonoBehaviour
     public void SetCell(Cell cell)
     {
         _cell = cell;
-    }
-
-    public void SetBoard(Board board)
-    {
-        _board = board;
     }
 
     public int GetX()

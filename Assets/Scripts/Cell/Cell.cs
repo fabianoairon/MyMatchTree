@@ -5,7 +5,7 @@ public class Cell : MonoBehaviour
     private int _xCoordinate;
     private int _yCoordinate;
 
-    private Board _board;
+    protected Board _board;
     private Piece _piece;
     private CellType _cellType;
 

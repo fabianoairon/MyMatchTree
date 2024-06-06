@@ -5,14 +5,15 @@ public class PiecePlacer : MonoBehaviour
     [SerializeField]
     private PieceSO[] _piecesSO;
 
+
+
     public void PlacePieceAt(Board board, Cell cell, Piece piece)
     {
+
         piece.transform.position = cell.GetCoordinate();
         piece.transform.rotation = Quaternion.identity;
         piece.transform.parent = transform;
         piece.gameObject.name = "Piece: " + cell.GetCoordinate().x + "." + cell.GetCoordinate().y + " - " + piece.gameObject.name;
-
-        piece.SetBoard(board);
 
         if (board.IsWithinBounds((int)cell.GetCoordinate().x, (int)cell.GetCoordinate().y))
         {
@@ -28,6 +29,8 @@ public class PiecePlacer : MonoBehaviour
 
     public Piece PlaceRandomPieceAt(Board board, Cell cell)
     {
+        if (cell.GetCellType() == CellType.OBSTACLE) return null;
+
         GameObject randomPieceGO = GetRandomPieceGameObject();
         Piece piece = randomPieceGO.GetComponent<Piece>();
         PlacePieceAt(board, cell, piece);
