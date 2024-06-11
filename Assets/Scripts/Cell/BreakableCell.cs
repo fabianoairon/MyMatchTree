@@ -30,7 +30,7 @@ public class BreakableCell : Cell
 
     public void SetPhase(int phase)
     {
-        phase = phase == 0 ? 1 : phase; // prevent breakable cells placed with phase 0, that is a normal cell
+        phase = phase == 0 ? 1 : phase; // prevent breakable cells placed with phase 0, that would be a normal cell
 
         _currentBreakablePhase = phase;
         ChangeSprite(phase);

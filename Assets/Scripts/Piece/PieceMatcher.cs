@@ -114,7 +114,7 @@ public class PieceMatcher : MonoBehaviour
 
     public IEnumerator MatchRoutine(Board board, List<Piece> pieces, Action<List<Piece>> callback)
     {
-        var matches = board.GetMatcher().FindAllMatchesOnListOfPieces(board, pieces);
+        var matches = FindAllMatchesOnListOfPieces(board, pieces);
         yield return new WaitForSeconds(0.25f);
         callback(matches);
     }

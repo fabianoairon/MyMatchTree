@@ -4,13 +4,15 @@ using System.Collections.Generic;
 
 public class CellPlacer : MonoBehaviour
 {
+    [Header("Starting Cells")]
+    [SerializeField]
+    private StartingCellsSO _startingCellsSO;
 
+    [Header("All Possible Cells")]
     [SerializeField]
     private CellSO[] _cellSO;
 
-    [SerializeField]
-    private StartingCell[] _startingCells;
-
+    [Header("Other")]
     [SerializeField]
     private Sprite[] _breakableSprites;
 
@@ -23,9 +25,9 @@ public class CellPlacer : MonoBehaviour
 
     public void GenerateCellGrid(Board board)
     {
-        if (_startingCells.Length > 0)
+        if (_startingCellsSO != null)
         {
-            StartingCellsGenerator(board, _startingCells);
+            StartingCellsGenerator(board, _startingCellsSO);
         }
 
 
@@ -57,16 +59,16 @@ public class CellPlacer : MonoBehaviour
 
     public Cell PlaceCell(Board board, StartingCell startingCell)
     {
-        return PlaceCell(board, startingCell._x, startingCell._y, startingCell._cellType, startingCell._initialBreakablePhase);
+        return PlaceCell(board, startingCell.X, startingCell.Y, startingCell.CellSO._cellType, startingCell.InitialBreakablePhase);
     }
 
-    private void StartingCellsGenerator(Board board, StartingCell[] startingCells)
+    private void StartingCellsGenerator(Board board, StartingCellsSO startingCellsSO)
     {
-        foreach (var singleCell in startingCells)
+        foreach (var cell in startingCellsSO.StartingCells)
         {
-            if (board.GetCellGrid()[singleCell._x, singleCell._y] == null)
+            if (board.IsWithinBounds(cell.X, cell.Y) && board.GetCellGrid()[cell.X, cell.Y] == null)
             {
-                PlaceCell(board, singleCell);
+                PlaceCell(board, cell);
             }
         }
     }

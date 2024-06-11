@@ -11,6 +11,7 @@ using System.Linq;
 [RequireComponent(typeof(PieceFiller))]
 [RequireComponent(typeof(CellPlacer))]
 [RequireComponent(typeof(CellBreaker))]
+[RequireComponent(typeof(BombSeeker))]
 public class Board : MonoBehaviour
 {
     [Header("Board Dimension")]
@@ -40,6 +41,9 @@ public class Board : MonoBehaviour
     private PieceMatcher _matcher;
     [SerializeField]
     private PieceFiller _filler;
+
+    [SerializeField]
+    private BombSeeker _bombSeeker;
 
     [Header("Durations")]
 
@@ -106,6 +110,8 @@ public class Board : MonoBehaviour
 
         do
         {
+            //_bombSeeker.SeekBombs(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess));
+
             yield return StartCoroutine(_clearer.ClearRoutine(this, piecesToProcess));
 
             yield return StartCoroutine(_collapser.CollpseRoutine(this, piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess)));
@@ -187,6 +193,11 @@ public class Board : MonoBehaviour
     public CellBreaker GetCellBreaker()
     {
         return _cellBreaker;
+    }
+
+    public BombSeeker GetBombSeeker()
+    {
+        return _bombSeeker;
     }
 
     private void HightlightPiece(Piece piece)

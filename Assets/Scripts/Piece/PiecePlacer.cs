@@ -1,9 +1,13 @@
 using UnityEngine;
+using System.Linq;
 
 public class PiecePlacer : MonoBehaviour
 {
     [SerializeField]
     private PieceSO[] _piecesSO;
+
+    [SerializeField]
+    private StartingPiecesSO _startingPieces;
 
     public void PlacePieceAt(Board board, Cell cell, Piece piece)
     {
@@ -44,10 +48,16 @@ public class PiecePlacer : MonoBehaviour
     private GameObject GetRandomPieceGameObject()
     {
         int randomIndex = Random.Range(0, _piecesSO.Length);
+        return GetPieceGameObjectByColor(_piecesSO[randomIndex]._pieceColor);
+    }
 
-        GameObject piecePrefab = Instantiate(_piecesSO[randomIndex]._piecePrefab);
+    private GameObject GetPieceGameObjectByColor(PieceColor pieceColor)
+    {
+        PieceSO pieceSO = _piecesSO.First(x => x._pieceColor == pieceColor);
+
+        GameObject piecePrefab = Instantiate(pieceSO._piecePrefab);
         Piece piece = piecePrefab.GetComponent<Piece>();
-        piece.SetPieceColor(_piecesSO[randomIndex]._pieceColor);
+        piece.SetPieceColor(pieceColor);
 
         return piecePrefab;
     }
