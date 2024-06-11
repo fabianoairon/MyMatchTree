@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 34405901}
   - component: {fileID: 34405902}
   - component: {fileID: 34405909}
+  - component: {fileID: 34405910}
   - component: {fileID: 34405903}
   - component: {fileID: 34405906}
   - component: {fileID: 34405905}
@@ -173,6 +174,7 @@ MonoBehaviour:
   _width: 7
   _height: 9
   _cellPlacer: {fileID: 34405909}
+  _cellBreaker: {fileID: 34405910}
   _swapper: {fileID: 34405906}
   _piecePlacer: {fileID: 34405903}
   _clearer: {fileID: 34405905}
@@ -298,6 +300,66 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 899a92a95b73ccc4aa2c8c2602331e06, type: 3}
   _normalCellColor: {r: 1, g: 1, b: 1, a: 0.017}
   _breakableCellColor: {r: 1, g: 1, b: 1, a: 0.05882353}
+--- !u!114 &34405910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34405900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c2625fd1100ab48b435cb9e149b084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &140650014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 140650016}
+  - component: {fileID: 140650015}
+  m_Layer: 0
+  m_Name: FXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &140650015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140650014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa8c3bc06a380d54a9c57131647de3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cellBreaker: {fileID: 34405910}
+  _pieceClearer: {fileID: 34405905}
+  _pieceClearFXPrefab: {fileID: 8056024398336215011, guid: ee9ed0fc0fc913b43976f606037f0c09, type: 3}
+  _cellBreakFXPrefab: {fileID: 2709615595465259344, guid: 45f53934bdfac1640ae51db742dc0240, type: 3}
+--- !u!4 &140650016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140650014}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.07117822, y: -0.067166865, z: 0.6036937}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &162666056
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,3 +765,4 @@ SceneRoots:
   - {fileID: 34405901}
   - {fileID: 1449271604}
   - {fileID: 162666059}
+  - {fileID: 140650016}

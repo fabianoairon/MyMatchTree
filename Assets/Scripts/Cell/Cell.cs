@@ -72,4 +72,14 @@ public class Cell : MonoBehaviour
     {
         return _cellType;
     }
+
+    public bool IsBreakable()
+    {
+        if (_cellType == CellType.BREAKABLE)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }

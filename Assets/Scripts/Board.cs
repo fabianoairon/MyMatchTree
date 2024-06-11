@@ -10,8 +10,10 @@ using System.Linq;
 [RequireComponent(typeof(PieceMatcher))]
 [RequireComponent(typeof(PieceFiller))]
 [RequireComponent(typeof(CellPlacer))]
+[RequireComponent(typeof(CellBreaker))]
 public class Board : MonoBehaviour
 {
+    [Header("Board Dimension")]
     [SerializeField]
     private int _width;
     [SerializeField]
@@ -19,8 +21,12 @@ public class Board : MonoBehaviour
 
     private Cell[,] _allCells;
 
+    [Header("Scripts References")]
+
     [SerializeField]
     private CellPlacer _cellPlacer;
+    [SerializeField]
+    private CellBreaker _cellBreaker;
 
     [SerializeField]
     private PieceSwapper _swapper;
@@ -34,6 +40,8 @@ public class Board : MonoBehaviour
     private PieceMatcher _matcher;
     [SerializeField]
     private PieceFiller _filler;
+
+    [Header("Durations")]
 
     [SerializeField]
     private float _swapPieceDuration;
@@ -174,6 +182,11 @@ public class Board : MonoBehaviour
     public CellPlacer GetCellPlacer()
     {
         return _cellPlacer;
+    }
+
+    public CellBreaker GetCellBreaker()
+    {
+        return _cellBreaker;
     }
 
     private void HightlightPiece(Piece piece)

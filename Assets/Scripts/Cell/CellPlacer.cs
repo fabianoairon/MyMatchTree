@@ -88,18 +88,6 @@ public class CellPlacer : MonoBehaviour
         return _breakableSprites[--phase];
     }
 
-    public void BreakBreakableCells(List<Piece> pieces)
-    {
-        foreach (var piece in pieces)
-        {
-            Cell cell = piece.GetCell();
-            if (cell.GetCellType() == CellType.BREAKABLE)
-            {
-                ((BreakableCell)cell).BreakCell();
-            }
-        }
-    }
-
     public Color GetNormalCellColor()
     {
         return _normalCellColor;
