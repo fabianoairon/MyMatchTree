@@ -56,7 +56,7 @@ public class PieceCollapser : MonoBehaviour
     {
         foreach (var piece in pieces)
         {
-            if (piece.transform.position.y - piece.GetY() > 0.001f)
+            if (piece.IsMoving())
             {
                 return false;
             }

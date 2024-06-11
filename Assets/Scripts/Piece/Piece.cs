@@ -81,4 +81,14 @@ public class Piece : MonoBehaviour
     {
         return _pieceColor;
     }
+
+    public Color GetPieceSpriteColor()
+    {
+        return GetComponent<SpriteRenderer>().color;
+    }
+
+    public bool IsMoving()
+    {
+        return _isMoving;
+    }
 }

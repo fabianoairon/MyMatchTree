@@ -25,6 +25,7 @@ public class FXManager : MonoBehaviour
     private void PieceClearer_OnPieceCleared(Piece piece)
     {
         GameObject pieceClearFX = Instantiate(_pieceClearFXPrefab, new Vector3(piece.GetX(), piece.GetY(), 0), Quaternion.identity);
+        pieceClearFX.GetComponent<Particle>().SetPieceSpriteColor(piece.GetPieceSpriteColor());
     }
 
     private void CellBreaker_OnCellBreaker(Cell cell)
