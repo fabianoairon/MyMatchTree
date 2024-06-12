@@ -204,7 +204,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1fee1e2df84c62e49b323148c84a6a93, type: 2}
   - {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
   - {fileID: 11400000, guid: f563da862de7a714b90d9e84fd5bdd5e, type: 2}
-  _startingPieces: []
+  _startingPieces: {fileID: 11400000, guid: 981601cd9df850445a6524c8238316ef, type: 2}
 --- !u!114 &34405904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,11 +277,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb7a71556106744cbfccf9010d8713f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startingCellsSO: {fileID: 11400000, guid: 566d86a72f30ca54bb8dfc4948228429, type: 2}
   _cellSO:
   - {fileID: 11400000, guid: 82f0bacce5285c242839418bd6b22fec, type: 2}
   - {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
   - {fileID: 11400000, guid: b311ca3550f9ff34880faf8b9dd4d1ca, type: 2}
-  _startingCellsSO: {fileID: 11400000, guid: 566d86a72f30ca54bb8dfc4948228429, type: 2}
   _breakableSprites:
   - {fileID: 21300000, guid: 93738ed3cc1a56748a4472fdc2aecb83, type: 3}
   - {fileID: 21300000, guid: 899a92a95b73ccc4aa2c8c2602331e06, type: 3}

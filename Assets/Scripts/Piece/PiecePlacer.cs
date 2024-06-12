@@ -1,17 +1,85 @@
 using UnityEngine;
 using System.Linq;
+using System.Collections;
+using System;
+using System.Collections.Generic;
 
 public class PiecePlacer : MonoBehaviour
 {
     [SerializeField]
-    private PieceSO[] _piecesSO;
+    private StartingPiecesSO _startingPieces;
 
     [SerializeField]
-    private StartingPiecesSO _startingPieces;
+    private PieceSO[] _piecesSO;
+
+    public void StartFillBoard(Board board, int yOffset = 0)
+    {
+        foreach (var sPiece in _startingPieces.StartingPieces)
+        {
+            PlaceStartingPieceAt(board, sPiece);
+        }
+
+        FillWithRandomPiece(board);
+    }
+
+    public List<Piece> FillWithRandomPiece(Board board, int yOffset = 0)
+    {
+        List<Piece> pieces = new List<Piece>();
+
+        for (int x = 0; x < board.GetWidth(); x++)
+        {
+            for (int y = 0; y < board.GetHeight(); y++)
+            {
+                Cell cell = board.GetCellGrid()[x, y];
+
+                if (board.GetCellGrid()[x, y].GetPiece() == null && cell.GetCellType() != CellType.OBSTACLE)
+                {
+                    Piece piece = board.GetPiecePlacer().PlaceRandomPieceAt(board, cell);
+
+                    if (yOffset == 0)
+                    {
+                        while (board.GetMatcher().HasMatchesAt(board, x, y))
+                        {
+                            board.GetPiecePlacer().SwitchPieceWithAnotherRandom(board, cell);
+                        }
+                    }
+                    else
+                    {
+                        piece.SetPosition(piece.GetX(), piece.GetY(), 0, yOffset);
+                        piece.Move(piece.GetCell().GetCoordinate(), MoveType.REFILL);
+                    }
+
+                    pieces.Add(piece);
+                }
+            }
+        }
+        return pieces;
+    }
+
+    private void PlaceStartingPieceAt(Board board, StartingPiece startingPiece)
+    {
+        Cell cell = board.GetCellGrid()[startingPiece.X, startingPiece.Y];
+
+        PieceSO pieceSO = startingPiece.PieceSO;
+        GameObject PieceGO = GetPieceGameObjectByColor(pieceSO._pieceColor);
+        Piece piece = PieceGO.GetComponent<Piece>();
+        PlacePieceAt(board, cell, piece);
+    }
+
+    public IEnumerator RefillRoutine(Board board, Action<List<Piece>> callback)
+    {
+        var filledPieces = FillWithRandomPiece(board, 7);
+
+        while (!board.GetCollapser().IsCollapseEnded(filledPieces))
+        {
+            yield return null;
+        }
+
+        callback(filledPieces);
+    }
 
     public void PlacePieceAt(Board board, Cell cell, Piece piece)
     {
-
         piece.transform.position = cell.GetCoordinate();
         piece.transform.rotation = Quaternion.identity;
         piece.transform.parent = transform;
@@ -47,7 +115,7 @@ public class PiecePlacer : MonoBehaviour
 
     private GameObject GetRandomPieceGameObject()
     {
-        int randomIndex = Random.Range(0, _piecesSO.Length);
+        int randomIndex = UnityEngine.Random.Range(0, _piecesSO.Length);
         return GetPieceGameObjectByColor(_piecesSO[randomIndex]._pieceColor);
     }
 

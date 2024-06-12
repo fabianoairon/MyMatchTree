@@ -8,7 +8,6 @@ using System.Linq;
 [RequireComponent(typeof(PieceCollapser))]
 [RequireComponent(typeof(PiecePlacer))]
 [RequireComponent(typeof(PieceMatcher))]
-[RequireComponent(typeof(PieceFiller))]
 [RequireComponent(typeof(CellPlacer))]
 [RequireComponent(typeof(CellBreaker))]
 [RequireComponent(typeof(BombSeeker))]
@@ -39,8 +38,6 @@ public class Board : MonoBehaviour
     private PieceCollapser _collapser;
     [SerializeField]
     private PieceMatcher _matcher;
-    [SerializeField]
-    private PieceFiller _filler;
 
     [SerializeField]
     private BombSeeker _bombSeeker;
@@ -58,7 +55,7 @@ public class Board : MonoBehaviour
     {
         _allCells = new Cell[_width, _height];
         _cellPlacer.GenerateCellGrid(this);
-        _filler.FillWithRandomPiece(this);
+        _piecePlacer.StartFillBoard(this);
     }
 
     public List<int> GetColumns(List<Piece> pieces)
@@ -116,7 +113,7 @@ public class Board : MonoBehaviour
 
             yield return StartCoroutine(_collapser.CollpseRoutine(this, piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess)));
 
-            yield return StartCoroutine(_filler.RefillRoutine(this, callback => MergePieceLists(callback, ref piecesToProcess)));
+            yield return StartCoroutine(_piecePlacer.RefillRoutine(this, callback => MergePieceLists(callback, ref piecesToProcess)));
 
             yield return StartCoroutine(_matcher.MatchRoutine(this, piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess)));
         }

@@ -57,14 +57,14 @@ public class CellPlacer : MonoBehaviour
         return cell;
     }
 
-    public Cell PlaceCell(Board board, StartingCell startingCell)
+    public Cell PlaceCell(Board board, StartingCell sCell)
     {
-        return PlaceCell(board, startingCell.X, startingCell.Y, startingCell.CellSO._cellType, startingCell.InitialBreakablePhase);
+        return PlaceCell(board, sCell.X, sCell.Y, sCell.CellSO._cellType, sCell.InitialBreakablePhase);
     }
 
-    private void StartingCellsGenerator(Board board, StartingCellsSO startingCellsSO)
+    private void StartingCellsGenerator(Board board, StartingCellsSO sCellsSO)
     {
-        foreach (var cell in startingCellsSO.StartingCells)
+        foreach (var cell in sCellsSO.StartingCells)
         {
             if (board.IsWithinBounds(cell.X, cell.Y) && board.GetCellGrid()[cell.X, cell.Y] == null)
             {
