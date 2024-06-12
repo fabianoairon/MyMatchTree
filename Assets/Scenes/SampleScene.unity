@@ -137,7 +137,6 @@ GameObject:
   - component: {fileID: 34405905}
   - component: {fileID: 34405904}
   - component: {fileID: 34405907}
-  - component: {fileID: 34405908}
   m_Layer: 0
   m_Name: BoardManager
   m_TagString: Untagged
@@ -181,7 +180,6 @@ MonoBehaviour:
   _clearer: {fileID: 34405905}
   _collapser: {fileID: 34405904}
   _matcher: {fileID: 34405907}
-  _filler: {fileID: 34405908}
   _bombSeeker: {fileID: 34405911}
   _swapPieceDuration: 0.2
   _collapsePieceDuration: 0.1
@@ -198,13 +196,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0bfccbaf54ae24b956278981c6c71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _startingPiecesSO: {fileID: 11400000, guid: 60368db8b630a0b46b573414bc650aa8, type: 2}
   _piecesSO:
   - {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
   - {fileID: 11400000, guid: 6306cb1174a17e746904cdb8310c27a1, type: 2}
   - {fileID: 11400000, guid: 1fee1e2df84c62e49b323148c84a6a93, type: 2}
   - {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
   - {fileID: 11400000, guid: f563da862de7a714b90d9e84fd5bdd5e, type: 2}
-  _startingPieces: {fileID: 11400000, guid: 981601cd9df850445a6524c8238316ef, type: 2}
 --- !u!114 &34405904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,18 +251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f20d0c4bc4abcda488c36d58ec2f14a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &34405908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34405900}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ee8efe99dae0b342a8da6b5bd817b58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &34405909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -277,7 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb7a71556106744cbfccf9010d8713f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingCellsSO: {fileID: 11400000, guid: 566d86a72f30ca54bb8dfc4948228429, type: 2}
+  _startingCellsSO: {fileID: 11400000, guid: a67363cab5958804a9a2f0e686dab8a3, type: 2}
   _cellSO:
   - {fileID: 11400000, guid: 82f0bacce5285c242839418bd6b22fec, type: 2}
   - {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}

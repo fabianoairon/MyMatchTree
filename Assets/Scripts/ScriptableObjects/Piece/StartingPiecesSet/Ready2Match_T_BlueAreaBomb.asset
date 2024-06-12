@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f9cc38063d791b46b762501ef8c4d16, type: 3}
-  m_Name: ReadyToMatch_T_Bottom_Left
+  m_Name: Ready2Match_T_BlueAreaBomb
   m_EditorClassIdentifier: 
-  StartingPieces:
-  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
-    X: 0
-    Y: 0
-  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
-    X: 1
-    Y: 0
-  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
-    X: 2
-    Y: 1
-  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
-    X: 2
-    Y: 2
+  StartingPiecesSet:
   - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
     X: 3
-    Y: 0
+    Y: 3
+  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
+    X: 3
+    Y: 4
+  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
+    X: 2
+    Y: 5
+  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
+    X: 4
+    Y: 5
+  - PieceSO: {fileID: 11400000, guid: 2805e049b4b66074bb02ea238569745b, type: 2}
+    X: 3
+    Y: 6

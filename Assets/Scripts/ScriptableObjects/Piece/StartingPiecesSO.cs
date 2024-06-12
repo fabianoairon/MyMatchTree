@@ -11,5 +11,5 @@ public class StartingPiece
 [CreateAssetMenu(fileName = "StartingPiece Asset", menuName = "ScriptableObjects/StartingPiece Asset", order = 1)]
 public class StartingPiecesSO : ScriptableObject
 {
-    public StartingPiece[] StartingPieces;
+    public StartingPiece[] StartingPiecesSet;
 }

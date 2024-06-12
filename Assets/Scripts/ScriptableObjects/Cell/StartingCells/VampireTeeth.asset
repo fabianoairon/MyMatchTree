@@ -1,0 +1,159 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b645e5812184b444bac150d4ce44449e, type: 3}
+  m_Name: VampireTeeth
+  m_EditorClassIdentifier: 
+  StartingCells:
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 0
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 1
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 2
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 3
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 4
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 5
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 6
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 7
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 0
+    Y: 8
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 0
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 1
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 2
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 3
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 4
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 5
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 6
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 7
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 1
+    Y: 8
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 0
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 1
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 2
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 3
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 4
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 5
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 6
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 7
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 6
+    Y: 8
+    InitialBreakablePhase: 1
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 0
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 1
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 2
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 3
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 4
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 5
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 6
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 7
+    InitialBreakablePhase: 2
+  - CellSO: {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}
+    X: 5
+    Y: 8
+    InitialBreakablePhase: 2

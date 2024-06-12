@@ -7,16 +7,19 @@ using System.Collections.Generic;
 public class PiecePlacer : MonoBehaviour
 {
     [SerializeField]
-    private StartingPiecesSO _startingPieces;
+    private StartingPiecesSO _startingPiecesSO;
 
     [SerializeField]
     private PieceSO[] _piecesSO;
 
     public void StartFillBoard(Board board, int yOffset = 0)
     {
-        foreach (var sPiece in _startingPieces.StartingPieces)
+        if (_startingPiecesSO != null && _startingPiecesSO.StartingPiecesSet.Count() > 0)
         {
-            PlaceStartingPieceAt(board, sPiece);
+            foreach (var sPiece in _startingPiecesSO.StartingPiecesSet)
+            {
+                PlaceStartingPieceAt(board, sPiece);
+            }
         }
 
         FillWithRandomPiece(board);
@@ -56,15 +59,7 @@ public class PiecePlacer : MonoBehaviour
         return pieces;
     }
 
-    private void PlaceStartingPieceAt(Board board, StartingPiece startingPiece)
-    {
-        Cell cell = board.GetCellGrid()[startingPiece.X, startingPiece.Y];
 
-        PieceSO pieceSO = startingPiece.PieceSO;
-        GameObject PieceGO = GetPieceGameObjectByColor(pieceSO._pieceColor);
-        Piece piece = PieceGO.GetComponent<Piece>();
-        PlacePieceAt(board, cell, piece);
-    }
 
     public IEnumerator RefillRoutine(Board board, Action<List<Piece>> callback)
     {
@@ -88,7 +83,7 @@ public class PiecePlacer : MonoBehaviour
         if (board.IsWithinBounds((int)cell.GetCoordinate().x, (int)cell.GetCoordinate().y))
         {
             cell.SetPiece(piece);
-            board.HightlightPieceOff(piece);
+            //board.HightlightPieceOff(piece);
         }
     }
 
@@ -116,17 +111,23 @@ public class PiecePlacer : MonoBehaviour
     private GameObject GetRandomPieceGameObject()
     {
         int randomIndex = UnityEngine.Random.Range(0, _piecesSO.Length);
-        return GetPieceGameObjectByColor(_piecesSO[randomIndex]._pieceColor);
+        return GetPieceGameObjectByPieceSO(_piecesSO[randomIndex]);
     }
 
-    private GameObject GetPieceGameObjectByColor(PieceColor pieceColor)
+    private GameObject GetPieceGameObjectByPieceSO(PieceSO pieceSO)
     {
-        PieceSO pieceSO = _piecesSO.First(x => x._pieceColor == pieceColor);
+        GameObject pieceGO = Instantiate(pieceSO._piecePrefab);
+        Piece piece = pieceGO.GetComponent<Piece>();
+        piece.SetPieceColor(pieceSO._pieceColor);
+        return pieceGO;
+    }
 
-        GameObject piecePrefab = Instantiate(pieceSO._piecePrefab);
-        Piece piece = piecePrefab.GetComponent<Piece>();
-        piece.SetPieceColor(pieceColor);
+    private void PlaceStartingPieceAt(Board board, StartingPiece startingPiece)
+    {
+        Cell cell = board.GetCellGrid()[startingPiece.X, startingPiece.Y];
 
-        return piecePrefab;
+        GameObject PieceGO = GetPieceGameObjectByPieceSO(startingPiece.PieceSO);
+        Piece piece = PieceGO.GetComponent<Piece>();
+        PlacePieceAt(board, cell, piece);
     }
 }

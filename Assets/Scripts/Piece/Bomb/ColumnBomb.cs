@@ -1,23 +1,20 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class ColumnBomb : Piece, IBombPiece
 {
-    private int _column;
-
     public List<Piece> Explode()
     {
         List<Piece> explodedPieces = new List<Piece>();
-        _column = GetX();
+        int column = GetX(); // row = coluna = cada colluna está num nivel X
 
         Board board = GetCell().GetBoard();
 
-        int rows = board.GetWidth();
+        int columnPiecesIndex = board.GetHeight(); // heighg é quantidade de peças na coluna
         Cell[,] allCells = board.GetCellGrid();
 
-        for (int i = 0; i < rows; i++)
+        for (int i = 0; i < columnPiecesIndex; i++)
         {
-            explodedPieces.Add(allCells[_column, i].GetPiece());
+            explodedPieces.Add(allCells[column, i].GetPiece());
         }
 
         return explodedPieces;

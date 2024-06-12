@@ -7,13 +7,13 @@ public class BombSeeker : MonoBehaviour
 {
     public void SeekBombs(List<Piece> piecesToProcess, Action<List<Piece>> callback)
     {
-        List<Piece> bombPieces = new List<Piece>();
+        List<Piece> bombPieces = piecesToProcess;
 
         foreach (var piece in piecesToProcess)
         {
             if (piece is IBombPiece bombPiece)
             {
-                bombPieces.Union(bombPiece.Explode()).ToList();
+                bombPieces = bombPieces.Union(bombPiece.Explode()).ToList();
             }
         }
 

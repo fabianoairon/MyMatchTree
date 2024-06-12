@@ -3,21 +3,19 @@ using UnityEngine;
 
 public class RowBomb : Piece, IBombPiece
 {
-    private int _row;
-
     public List<Piece> Explode()
     {
         List<Piece> explodedPieces = new List<Piece>();
-        _row = GetY();
+        int row = GetY(); // row = fileira horizontal = cada fileira está num nivel Y
 
         Board board = GetCell().GetBoard();
 
-        int columns = board.GetWidth();
+        int rowPiecesIndex = board.GetWidth(); // width é quantidade de peças na fileira
         Cell[,] allCells = board.GetCellGrid();
 
-        for (int i = 0; i < columns; i++)
+        for (int i = 0; i < rowPiecesIndex; i++)
         {
-            explodedPieces.Add(allCells[i, _row].GetPiece());
+            explodedPieces.Add(allCells[i, row].GetPiece());
         }
 
         return explodedPieces;

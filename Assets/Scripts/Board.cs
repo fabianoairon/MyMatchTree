@@ -107,7 +107,7 @@ public class Board : MonoBehaviour
 
         do
         {
-            //_bombSeeker.SeekBombs(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess));
+            _bombSeeker.SeekBombs(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess));
 
             yield return StartCoroutine(_clearer.ClearRoutine(this, piecesToProcess));
 

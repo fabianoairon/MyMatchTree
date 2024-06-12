@@ -15,9 +15,12 @@ public class AreaBomb : Piece, IBombPiece
 
         for (int i = GetX() - _areaOffset; i <= GetX() + _areaOffset; i++)
         {
-            for (int j = GetY() - _areaOffset; j <= GetY() - _areaOffset; j++)
+            for (int j = GetY() - _areaOffset; j <= GetY() + _areaOffset; j++)
             {
-                explodedPieces.Add(allCells[i, j].GetPiece());
+                if (GetCell().GetBoard().IsWithinBounds(i, j))
+                {
+                    explodedPieces.Add(allCells[i, j].GetPiece());
+                }
             }
         }
 

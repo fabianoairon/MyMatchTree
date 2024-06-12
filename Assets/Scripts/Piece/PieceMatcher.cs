@@ -104,8 +104,13 @@ public class PieceMatcher : MonoBehaviour
     {
         List<Piece> leftPieces = FindMatches(board, x, y, Vector2.left, minCount);
         List<Piece> downPieces = FindMatches(board, x, y, Vector2.down, minCount);
+        List<Piece> rightPieces = FindMatches(board, x, y, Vector2.right, minCount);
+        List<Piece> upPieces = FindMatches(board, x, y, Vector2.up, minCount);
 
-        if (leftPieces.Count >= minCount || downPieces.Count >= minCount)
+        if (leftPieces.Count >= minCount ||
+        downPieces.Count >= minCount ||
+        rightPieces.Count >= minCount ||
+        upPieces.Count >= minCount)
         {
             return true;
         }
