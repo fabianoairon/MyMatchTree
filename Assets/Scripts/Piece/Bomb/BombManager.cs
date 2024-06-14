@@ -107,19 +107,14 @@ public class BombManager : MonoBehaviour
         return piecePlaced;
     }
 
-    private Piece SetColorData(Piece piece, PieceColor pieceColor, Color color)
-    {
-        piece.SetPieceColor(pieceColor);
-        piece.SetPieceSpriteColor(color);
-        return piece;
-    }
+
 
     private void SpawnBombs()
     {
         foreach (var bomb in _spawnBombList)
         {
             Piece piece = PlaceBomb(board, bomb.Cell, bomb.BombPieceSO);
-            SetColorData(piece, bomb.PieceColor, bomb.Color);
+            piece.SetColorAndSprite(piece, bomb.PieceColor, bomb.Color);
         }
 
         _spawnBombList.Clear();

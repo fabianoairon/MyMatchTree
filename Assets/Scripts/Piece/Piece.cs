@@ -111,4 +111,11 @@ public class Piece : MonoBehaviour
     {
         _isSwapping = isSwapping;
     }
+
+    public Piece SetColorAndSprite(Piece piece, PieceColor pieceColor, Color color)
+    {
+        SetPieceColor(pieceColor);
+        SetPieceSpriteColor(color);
+        return piece;
+    }
 }
