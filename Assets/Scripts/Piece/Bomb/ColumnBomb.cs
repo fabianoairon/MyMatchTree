@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class ColumnBomb : Piece, IBombPiece
 {
-    public List<Piece> Explode()
+    public List<Piece> GetBombedPiecesInRange()
     {
         List<Piece> explodedPieces = new List<Piece>();
         int column = GetX(); // row = coluna = cada colluna está num nivel X

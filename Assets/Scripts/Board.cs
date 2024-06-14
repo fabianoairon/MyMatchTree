@@ -107,9 +107,11 @@ public class Board : MonoBehaviour
 
         do
         {
-            _bombManager.SeekBombs(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess));
+            _bombManager.PutBombsInRangeToClear(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess));
 
             yield return StartCoroutine(_clearer.ClearRoutine(this, piecesToProcess));
+
+            yield return StartCoroutine(_bombManager.SpawnBombsRoutine());
 
             yield return StartCoroutine(_collapser.CollpseRoutine(this, piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess)));
 
@@ -119,6 +121,7 @@ public class Board : MonoBehaviour
         }
         while (piecesToProcess.Count != 0);
 
+        _swapper.UnsetSwappers(pieces);
         _swapper.SetPlayerCanSwap(true);
     }
 
@@ -197,6 +200,7 @@ public class Board : MonoBehaviour
         return _bombManager;
     }
 
+    #region hightlight pieces
     private void HightlightPiece(Piece piece)
     {
         if (piece == null) return;
@@ -224,4 +228,5 @@ public class Board : MonoBehaviour
             HightlightPiece(piece);
         }
     }
+    #endregion
 }

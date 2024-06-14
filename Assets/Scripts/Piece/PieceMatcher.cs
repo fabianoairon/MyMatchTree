@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PieceMatcher : MonoBehaviour
 {
+    public event Action<List<Piece>> OnMatchOccur;
 
     private List<Piece> FindMatches(Board board, int startX, int startY, Vector2 direction, int minCount = 3)
     {
@@ -46,7 +47,7 @@ public class PieceMatcher : MonoBehaviour
         return matchPieces.Count >= minCount ? matchPieces : new List<Piece>();
     }
 
-    private List<Piece> FindHorizontalMatches(Board board, int startX, int startY, int minCount = 3)
+    public List<Piece> FindHorizontalMatches(Board board, int startX, int startY, int minCount = 3)
     {
         List<Piece> leftMatches = FindMatches(board, startX, startY, Vector2.left, 2);
         List<Piece> rightMatches = FindMatches(board, startX, startY, Vector2.right, 2);
@@ -56,7 +57,7 @@ public class PieceMatcher : MonoBehaviour
         return horizontalMatches.Count >= minCount ? horizontalMatches : new List<Piece>();
     }
 
-    private List<Piece> FindVerticalMatches(Board board, int startX, int startY, int minCount = 3)
+    public List<Piece> FindVerticalMatches(Board board, int startX, int startY, int minCount = 3)
     {
         List<Piece> upMatches = FindMatches(board, startX, startY, Vector2.up, 2);
         List<Piece> downMatches = FindMatches(board, startX, startY, Vector2.down, 2);
@@ -97,7 +98,12 @@ public class PieceMatcher : MonoBehaviour
         var matchesOne = FindAllMatchesByPiece(board, pieceOne, minCount);
         var matchesTwo = FindAllMatchesByPiece(board, pieceTwo, minCount);
 
-        return matchesOne.Union(matchesTwo).ToList();
+        var allMatches = matchesOne.Union(matchesTwo).ToList();
+
+        OnMatchOccur?.Invoke(matchesOne);
+        OnMatchOccur?.Invoke(matchesTwo);
+
+        return allMatches;
     }
 
     public bool HasMatchesAt(Board board, int x, int y, int minCount = 3)
@@ -120,6 +126,7 @@ public class PieceMatcher : MonoBehaviour
     public IEnumerator MatchRoutine(Board board, List<Piece> pieces, Action<List<Piece>> callback)
     {
         var matches = FindAllMatchesOnListOfPieces(board, pieces);
+        OnMatchOccur?.Invoke(matches);
         yield return new WaitForSeconds(0.25f);
         callback(matches);
     }

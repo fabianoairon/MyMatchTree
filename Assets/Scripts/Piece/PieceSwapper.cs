@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PieceSwapper : MonoBehaviour
 {
-    private Piece _selectedPiece;
-    private Piece _swappedPiece;
+    private Piece _startPiece;
+    private Piece _targetPiece;
 
     private bool _playerCanSwap = true;
 
@@ -21,9 +21,9 @@ public class PieceSwapper : MonoBehaviour
 
     public void SetFirstPiece(Piece piece)
     {
-        if (_selectedPiece == null && _swappedPiece == null)
+        if (_startPiece == null && _targetPiece == null)
         {
-            _selectedPiece = piece;
+            _startPiece = piece;
         }
     }
 
@@ -31,21 +31,21 @@ public class PieceSwapper : MonoBehaviour
     {
         if (piece.GetCell() == null) return;
 
-        if (_selectedPiece != null && _swappedPiece == null)
+        if (_startPiece != null && _targetPiece == null)
         {
-            _swappedPiece = piece;
+            _targetPiece = piece;
         }
     }
 
     public void SwapPieces(Board board)
     {
-        if (_playerCanSwap && _selectedPiece != null && _swappedPiece != null && IsAdjascent(_selectedPiece.GetCell(), _swappedPiece.GetCell()))
+        if (_playerCanSwap && _startPiece != null && _targetPiece != null && IsAdjascent(_startPiece.GetCell(), _targetPiece.GetCell()))
         {
-            StartCoroutine(SwapPiecesRoutine(board, _selectedPiece, _swappedPiece));
+            StartCoroutine(SwapPiecesRoutine(board, _startPiece, _targetPiece));
         }
 
-        _selectedPiece = null;
-        _swappedPiece = null;
+        _startPiece = null;
+        _targetPiece = null;
     }
 
     private IEnumerator SwapPiecesRoutine(Board board, Piece startPiece, Piece endPiece)
@@ -59,11 +59,13 @@ public class PieceSwapper : MonoBehaviour
 
         yield return new WaitForSeconds(swapDuration);
 
+        SetSwappers(startPiece, endPiece);
         var allMatches = board.GetMatcher().FindAllMatchesTwoPieces(board, startPiece, endPiece);
 
         if (allMatches.Count == 0)
         {
             Swaping(startPiece, endPiece);
+            UnsetSwappers(startPiece, endPiece);
         }
         else
         {
@@ -81,5 +83,28 @@ public class PieceSwapper : MonoBehaviour
     public void SetPlayerCanSwap(bool boolean)
     {
         _playerCanSwap = boolean;
+    }
+
+    private void SetSwappers(Piece startPiece, Piece endPiece)
+    {
+        startPiece.SetIsSwapping(true);
+        endPiece.SetIsSwapping(true);
+    }
+
+    private void UnsetSwappers(Piece startPiece, Piece endPiece)
+    {
+        startPiece.SetIsSwapping(false);
+        endPiece.SetIsSwapping(false);
+    }
+
+    public void UnsetSwappers(List<Piece> pieces)
+    {
+        foreach (var piece in pieces)
+        {
+            if (piece.IsSwapping())
+            {
+                piece.SetIsSwapping(false);
+            }
+        }
     }
 }

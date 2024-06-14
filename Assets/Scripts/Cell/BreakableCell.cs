@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class BreakableCell : Cell
 {
-    public event Action<Cell> OnCellBroke;
-
     private int _currentBreakablePhase;
 
     public void BreakCell()
@@ -30,7 +28,7 @@ public class BreakableCell : Cell
 
     public void SetPhase(int phase)
     {
-        phase = phase == 0 ? 1 : phase; // prevent breakable cells placed with phase 0, that would be a normal cell
+        phase = phase <= 0 ? 1 : phase; // prevents breakable cells accidentally placed with phase 0, that would be a normal cell
 
         _currentBreakablePhase = phase;
         ChangeSprite(phase);

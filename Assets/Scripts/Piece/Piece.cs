@@ -1,9 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Piece : MonoBehaviour
 {
     private bool _isMoving = false;
+    private bool _isSwapping = false;
     private Cell _cell;
 
     [SerializeField]
@@ -89,8 +92,23 @@ public class Piece : MonoBehaviour
         return GetComponent<SpriteRenderer>().color;
     }
 
+    public void SetPieceSpriteColor(Color color)
+    {
+        GetComponent<SpriteRenderer>().color = color;
+    }
+
     public bool IsMoving()
     {
         return _isMoving;
+    }
+
+    public bool IsSwapping()
+    {
+        return _isSwapping;
+    }
+
+    public void SetIsSwapping(bool isSwapping)
+    {
+        _isSwapping = isSwapping;
     }
 }

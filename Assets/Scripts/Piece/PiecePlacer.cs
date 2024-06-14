@@ -37,7 +37,7 @@ public class PiecePlacer : MonoBehaviour
 
                 if (board.GetCellGrid()[x, y].GetPiece() == null && cell.GetCellType() != CellType.OBSTACLE)
                 {
-                    Piece piece = board.GetPiecePlacer().PlaceRandomPieceAt(board, cell);
+                    Piece piece = board.GetPiecePlacer().PlacePieceAt(board, cell);
 
                     if (yOffset == 0)
                     {
@@ -58,8 +58,6 @@ public class PiecePlacer : MonoBehaviour
         }
         return pieces;
     }
-
-
 
     public IEnumerator RefillRoutine(Board board, Action<List<Piece>> callback)
     {
@@ -92,12 +90,22 @@ public class PiecePlacer : MonoBehaviour
         PlacePieceAt(board, board.GetCellGrid()[x, y], piece);
     }
 
-    public Piece PlaceRandomPieceAt(Board board, Cell cell)
+    public Piece PlacePieceAt(Board board, Cell cell, PieceSO pieceSO = null)
     {
         if (cell.GetCellType() == CellType.OBSTACLE) return null;
 
-        GameObject randomPieceGO = GetRandomPieceGameObject();
-        Piece piece = randomPieceGO.GetComponent<Piece>();
+        GameObject gameObject;
+
+        if (pieceSO == null)
+        {
+            gameObject = GetRandomPieceGameObject();
+        }
+        else
+        {
+            gameObject = GetPieceGameObjectByPieceSO(pieceSO);
+        }
+
+        Piece piece = GetPieceFromInstantiatedGOPiece(gameObject);
         PlacePieceAt(board, cell, piece);
         return piece;
     }
@@ -105,7 +113,7 @@ public class PiecePlacer : MonoBehaviour
     public void SwitchPieceWithAnotherRandom(Board board, Cell cell)
     {
         cell.ClearPiece();
-        PlaceRandomPieceAt(board, cell);
+        PlacePieceAt(board, cell);
     }
 
     private GameObject GetRandomPieceGameObject()
@@ -116,18 +124,21 @@ public class PiecePlacer : MonoBehaviour
 
     private GameObject GetPieceGameObjectByPieceSO(PieceSO pieceSO)
     {
-        GameObject pieceGO = Instantiate(pieceSO._piecePrefab);
-        Piece piece = pieceGO.GetComponent<Piece>();
+        Piece piece = GetPieceFromInstantiatedGOPiece(Instantiate(pieceSO._piecePrefab));
         piece.SetPieceColor(pieceSO._pieceColor);
-        return pieceGO;
+        return piece.gameObject;
     }
 
     private void PlaceStartingPieceAt(Board board, StartingPiece startingPiece)
     {
         Cell cell = board.GetCellGrid()[startingPiece.X, startingPiece.Y];
 
-        GameObject PieceGO = GetPieceGameObjectByPieceSO(startingPiece.PieceSO);
-        Piece piece = PieceGO.GetComponent<Piece>();
+        Piece piece = GetPieceFromInstantiatedGOPiece(GetPieceGameObjectByPieceSO(startingPiece.PieceSO));
         PlacePieceAt(board, cell, piece);
+    }
+
+    private Piece GetPieceFromInstantiatedGOPiece(GameObject gameObject)
+    {
+        return gameObject.GetComponent<Piece>();
     }
 }

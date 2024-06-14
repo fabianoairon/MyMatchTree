@@ -180,7 +180,7 @@ MonoBehaviour:
   _clearer: {fileID: 34405905}
   _collapser: {fileID: 34405904}
   _matcher: {fileID: 34405907}
-  _bombSeeker: {fileID: 34405911}
+  _bombManager: {fileID: 34405911}
   _swapPieceDuration: 0.2
   _collapsePieceDuration: 0.1
   _refillPieceDuration: 0.04
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0bfccbaf54ae24b956278981c6c71a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingPiecesSO: {fileID: 11400000, guid: 60368db8b630a0b46b573414bc650aa8, type: 2}
+  _startingPiecesSO: {fileID: 11400000, guid: a883d7492bbf2774785ccb89079630a2, type: 2}
   _piecesSO:
   - {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
   - {fileID: 11400000, guid: 6306cb1174a17e746904cdb8310c27a1, type: 2}
@@ -297,6 +297,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f294a93c2db8394388605d07012af2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _areaBomb: {fileID: 11400000, guid: 2805e049b4b66074bb02ea238569745b, type: 2}
+  _rowBomb: {fileID: 11400000, guid: f7d3a79c5bc18224195accb901ae6d40, type: 2}
+  _columnBomb: {fileID: 11400000, guid: 367d60868b6933244b1dd48e382bf4d6, type: 2}
 --- !u!1 &140650014
 GameObject:
   m_ObjectHideFlags: 0

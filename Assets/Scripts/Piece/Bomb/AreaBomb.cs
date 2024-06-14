@@ -5,7 +5,7 @@ public class AreaBomb : Piece, IBombPiece
 {
     private int _areaOffset = 1;
 
-    public List<Piece> Explode()
+    public List<Piece> GetBombedPiecesInRange()
     {
         List<Piece> explodedPieces = new List<Piece>();
 

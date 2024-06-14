@@ -31,7 +31,7 @@ public class Cell : MonoBehaviour
     public void ClearPiece()
     {
         var piece = _piece;
-        _board.HightlightPieceOff(piece);
+        //_board.HightlightPieceOff(piece);
         Destroy(piece.gameObject);
         _piece = null;
     }

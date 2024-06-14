@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RowBomb : Piece, IBombPiece
 {
-    public List<Piece> Explode()
+    public List<Piece> GetBombedPiecesInRange()
     {
         List<Piece> explodedPieces = new List<Piece>();
         int row = GetY(); // row = fileira horizontal = cada fileira está num nivel Y
