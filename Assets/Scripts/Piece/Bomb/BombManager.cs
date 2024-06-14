@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BombSeeker : MonoBehaviour
+public class BombManager : MonoBehaviour
 {
     public void SeekBombs(List<Piece> piecesToProcess, Action<List<Piece>> callback)
     {

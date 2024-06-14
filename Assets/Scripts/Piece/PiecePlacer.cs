@@ -78,7 +78,7 @@ public class PiecePlacer : MonoBehaviour
         piece.transform.position = cell.GetCoordinate();
         piece.transform.rotation = Quaternion.identity;
         piece.transform.parent = transform;
-        piece.gameObject.name = "Piece: " + cell.GetCoordinate().x + "." + cell.GetCoordinate().y + " - " + piece.gameObject.name;
+        piece.gameObject.name = "Piece: " + cell.GetCoordinate().x + "." + cell.GetCoordinate().y + " - " + piece.GetPieceColor();
 
         if (board.IsWithinBounds((int)cell.GetCoordinate().x, (int)cell.GetCoordinate().y))
         {
