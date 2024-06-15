@@ -50,6 +50,7 @@ public class PieceSwapper : MonoBehaviour
 
     private IEnumerator SwapPiecesRoutine(Board board, Piece startPiece, Piece endPiece)
     {
+        Debug.Log("PieceSwapper.SwapPieceslRoutine Started");
         float swapDuration = board.GetMoveDuration(MoveType.SWAP, startPiece.GetCell().GetCoordinate(), endPiece.GetCell().GetCoordinate());
 
         if (startPiece != null && endPiece != null)
@@ -69,8 +70,11 @@ public class PieceSwapper : MonoBehaviour
         }
         else
         {
-            board.ClearCollapseRefillMatch(allMatches);
+            yield return StartCoroutine(board.ClearCollapseRefillMatchRoutine(allMatches));
         }
+
+        yield return new WaitForSeconds(.5f);
+        Debug.Log("PieceSwapper.SwapPieceslRoutine Ended");
     }
 
     public void Swaping(Piece startPiece, Piece endPiece)

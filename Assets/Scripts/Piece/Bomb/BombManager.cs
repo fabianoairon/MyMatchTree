@@ -46,7 +46,7 @@ public class BombManager : MonoBehaviour
         GetBombsToSpawn(list);
     }
 
-    public void PutBombsInRangeToClear(List<Piece> piecesToProcess, Action<List<Piece>> callback)
+    public IEnumerator PutBombsInRangeToClear(List<Piece> piecesToProcess, Action<List<Piece>> callback)
     {
         List<Piece> bombPieces = piecesToProcess;
 
@@ -59,6 +59,7 @@ public class BombManager : MonoBehaviour
         }
 
         callback(bombPieces);
+        yield return new WaitForSeconds(0.5f);
     }
 
     public void GetBombsToSpawn(List<Piece> piecesToCheckBomb)
@@ -122,8 +123,10 @@ public class BombManager : MonoBehaviour
 
     public IEnumerator SpawnBombsRoutine()
     {
+        Debug.Log("BombManager.SpawnBombsRoutine Started");
         SpawnBombs();
         yield return new WaitForSeconds(.5f);
+        Debug.Log("BombManager.SpawnBombsRoutine Started");
     }
 
 }

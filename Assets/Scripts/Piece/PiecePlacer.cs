@@ -61,6 +61,7 @@ public class PiecePlacer : MonoBehaviour
 
     public IEnumerator RefillRoutine(Board board, Action<List<Piece>> callback)
     {
+        Debug.Log("PiecePlacer.RefillRoutine Started");
         var filledPieces = FillWithRandomPiece(board, 7);
 
         while (!board.GetCollapser().IsCollapseEnded(filledPieces))
@@ -69,6 +70,8 @@ public class PiecePlacer : MonoBehaviour
         }
 
         callback(filledPieces);
+        yield return new WaitForSeconds(.5f);
+        Debug.Log("PiecePlacer.RefillRoutine Ended");
     }
 
     public void PlacePieceAt(Board board, Cell cell, Piece piece)

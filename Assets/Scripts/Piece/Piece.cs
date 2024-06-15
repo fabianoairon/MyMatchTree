@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class Piece : MonoBehaviour
@@ -16,12 +14,17 @@ public class Piece : MonoBehaviour
     {
         if (!_isMoving)
         {
-            StartCoroutine(MovePiece(destination, moveType));
+            StartCoroutine(MoveRoutine(destination, moveType));
+        }
+        else
+        {
+            Debug.LogWarning("Cannot move!!!");
         }
     }
 
-    private IEnumerator MovePiece(Vector3 destination, MoveType moveType)
+    private IEnumerator MoveRoutine(Vector3 destination, MoveType moveType)
     {
+        Debug.Log("Piece.MoveRoutine Started");
         bool isInDestination = false;
         float currentTime = 0;
         Vector3 initialPosition = transform.position;
@@ -36,6 +39,7 @@ public class Piece : MonoBehaviour
             {
                 _cell.GetBoard().GetPiecePlacer().PlacePieceAt(_cell.GetBoard(), (int)destination.x, (int)destination.y, this);
                 isInDestination = true;
+                break;
             }
             else
             {
@@ -48,8 +52,9 @@ public class Piece : MonoBehaviour
                 yield return null;
             }
         }
-
         _isMoving = false;
+
+        Debug.Log("Piece.MoveRoutine Ended");
     }
 
     public void SetPosition(int x, int y, int z = 0, int yOffSet = 0)

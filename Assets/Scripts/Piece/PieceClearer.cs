@@ -23,10 +23,11 @@ public class PieceClearer : MonoBehaviour
 
     public IEnumerator ClearRoutine(Board board, List<Piece> pieces)
     {
-        // se tem bombas em "pieces" adicionar peças que estão no alcance delas em pieces
+        Debug.Log("PieceCleaner.ClearRoutine Started");
         board.GetClearer().ClearPieceAt(pieces);
         board.GetCellBreaker().BreakBreakableCells(pieces);
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("PieceCleaner.ClearRoutine Ended");
     }
 }

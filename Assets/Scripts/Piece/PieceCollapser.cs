@@ -67,6 +67,8 @@ public class PieceCollapser : MonoBehaviour
 
     public IEnumerator CollpseRoutine(Board board, List<Piece> pieces, Action<List<Piece>> callback)
     {
+        Debug.Log("PieceCollapser.CollapseRoutine Started");
+
         var movingPieces = board.GetCollapser().CollapseColumns(board, pieces);
 
         while (!IsCollapseEnded(movingPieces))
@@ -75,6 +77,9 @@ public class PieceCollapser : MonoBehaviour
         }
 
         callback(movingPieces);
+
+        yield return new WaitForSeconds(.5f);
+        Debug.Log("PieceCollapser.CollapseRoutine Ended");
     }
 
 

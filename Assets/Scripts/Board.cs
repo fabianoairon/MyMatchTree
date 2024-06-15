@@ -95,19 +95,15 @@ public class Board : MonoBehaviour
         }
     }
 
-    public void ClearCollapseRefillMatch(List<Piece> pieces)
-    {
-        StartCoroutine(ClearCollapseRefillMatchRoutine(pieces));
-    }
-
     public IEnumerator ClearCollapseRefillMatchRoutine(List<Piece> pieces)
     {
+        Debug.Log("Board.ClearCollapseRefillMatchRoutine Started");
         _swapper.SetPlayerCanSwap(false);
         List<Piece> piecesToProcess = pieces;
 
         do
         {
-            _bombManager.PutBombsInRangeToClear(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess));
+            yield return StartCoroutine(_bombManager.PutBombsInRangeToClear(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess)));
 
             yield return StartCoroutine(_clearer.ClearRoutine(this, piecesToProcess));
 
@@ -123,6 +119,7 @@ public class Board : MonoBehaviour
 
         _swapper.UnsetSwappers(pieces);
         _swapper.SetPlayerCanSwap(true);
+        Debug.Log("Board.ClearCollapseRefillMatchRoutine Ended");
     }
 
     private void UpdatePieceList(List<Piece> sourceList, ref List<Piece> targetList)
