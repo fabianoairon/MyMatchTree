@@ -22,7 +22,7 @@ public class BombManager : MonoBehaviour
         }
     }
 
-    Board board;
+    private Board _board;
 
     [SerializeField]
     private PieceSO _areaBomb;
@@ -35,8 +35,8 @@ public class BombManager : MonoBehaviour
 
     private void Start()
     {
-        board = GetComponent<Board>();
-        board.GetMatcher().OnMatchOccur += PieceMatcher_OnMatchOccur;
+        _board = GetComponent<Board>();
+        _board.GetMatcher().OnMatchOccur += PieceMatcher_OnMatchOccur;
 
         _spawnBombList = new List<BombPieceData>();
     }
@@ -59,7 +59,7 @@ public class BombManager : MonoBehaviour
         }
 
         callback(bombPieces);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(_board.GetCoroutineFinalPauseDuration());
     }
 
     public void GetBombsToSpawn(List<Piece> piecesToCheckBomb)
@@ -70,8 +70,8 @@ public class BombManager : MonoBehaviour
 
         foreach (var piece in piecesToCheckBomb)
         {
-            var horzMatches = board.GetMatcher().FindHorizontalMatches(board, piece.GetX(), piece.GetY());
-            var vertMatches = board.GetMatcher().FindVerticalMatches(board, piece.GetX(), piece.GetY());
+            var horzMatches = _board.GetMatcher().FindHorizontalMatches(_board, piece.GetX(), piece.GetY());
+            var vertMatches = _board.GetMatcher().FindVerticalMatches(_board, piece.GetX(), piece.GetY());
 
             if (horzMatches.Count >= 3 && vertMatches.Count >= 3)
             {
@@ -108,24 +108,24 @@ public class BombManager : MonoBehaviour
         return piecePlaced;
     }
 
-
-
-    private void SpawnBombs()
+    public IEnumerator SpawnBombsRoutine(Action<List<Piece>> callback)
     {
+        Debug.Log("BombManager.SpawnBombsRoutine Started");
+
+        List<Piece> bombsToProcess = new List<Piece>();
+
         foreach (var bomb in _spawnBombList)
         {
-            Piece piece = PlaceBomb(board, bomb.Cell, bomb.BombPieceSO);
+            Piece piece = PlaceBomb(_board, bomb.Cell, bomb.BombPieceSO);
             piece.SetColorAndSprite(piece, bomb.PieceColor, bomb.Color);
+
+            bombsToProcess.Add(piece);
         }
 
         _spawnBombList.Clear();
-    }
 
-    public IEnumerator SpawnBombsRoutine()
-    {
-        Debug.Log("BombManager.SpawnBombsRoutine Started");
-        SpawnBombs();
-        yield return new WaitForSeconds(.5f);
+        callback(bombsToProcess);
+        yield return new WaitForSeconds(_board.GetCoroutineFinalPauseDuration());
         Debug.Log("BombManager.SpawnBombsRoutine Started");
     }
 

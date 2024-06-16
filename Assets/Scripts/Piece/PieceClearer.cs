@@ -27,7 +27,7 @@ public class PieceClearer : MonoBehaviour
         board.GetClearer().ClearPieceAt(pieces);
         board.GetCellBreaker().BreakBreakableCells(pieces);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(board.GetCoroutineFinalPauseDuration());
         Debug.Log("PieceCleaner.ClearRoutine Ended");
     }
 }

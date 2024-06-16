@@ -184,6 +184,7 @@ MonoBehaviour:
   _swapPieceDuration: 0.2
   _collapsePieceDuration: 0.1
   _refillPieceDuration: 0.04
+  _coroutineFinalPauseDuration: 0.1
 --- !u!114 &34405903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +264,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb7a71556106744cbfccf9010d8713f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startingCellsSO: {fileID: 11400000, guid: a67363cab5958804a9a2f0e686dab8a3, type: 2}
+  _startingCellsSO: {fileID: 0}
   _cellSO:
   - {fileID: 11400000, guid: 82f0bacce5285c242839418bd6b22fec, type: 2}
   - {fileID: 11400000, guid: 0140c84a2fc181f4db12edb155fa3b66, type: 2}

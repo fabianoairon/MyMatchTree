@@ -42,6 +42,7 @@ public class PieceSwapper : MonoBehaviour
         if (_playerCanSwap && _startPiece != null && _targetPiece != null && IsAdjascent(_startPiece.GetCell(), _targetPiece.GetCell()))
         {
             StartCoroutine(SwapPiecesRoutine(board, _startPiece, _targetPiece));
+            _playerCanSwap = false;
         }
 
         _startPiece = null;
@@ -74,6 +75,8 @@ public class PieceSwapper : MonoBehaviour
         }
 
         yield return new WaitForSeconds(.5f);
+
+        _playerCanSwap = true;
         Debug.Log("PieceSwapper.SwapPieceslRoutine Ended");
     }
 
@@ -82,11 +85,6 @@ public class PieceSwapper : MonoBehaviour
         if (startPiece == null || endPiece == null) return;
         startPiece.Move(endPiece.GetCell().GetCoordinate(), MoveType.SWAP);
         endPiece.Move(startPiece.GetCell().GetCoordinate(), MoveType.SWAP);
-    }
-
-    public void SetPlayerCanSwap(bool boolean)
-    {
-        _playerCanSwap = boolean;
     }
 
     private void SetSwappers(Piece startPiece, Piece endPiece)

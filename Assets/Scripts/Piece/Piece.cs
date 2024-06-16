@@ -38,21 +38,21 @@ public class Piece : MonoBehaviour
             if (Vector3.Distance(transform.position, destination) < 0.01f || moveType == MoveType.INSTANT)
             {
                 _cell.GetBoard().GetPiecePlacer().PlacePieceAt(_cell.GetBoard(), (int)destination.x, (int)destination.y, this);
-                isInDestination = true;
+                _isMoving = false;
                 break;
             }
             else
             {
                 currentTime += Time.deltaTime;
 
-                float t = currentTime / moveDuration;
+                float t = Mathf.Clamp(currentTime / moveDuration, 0f, 1f);
                 t = t * t * (3f - 2f * t);
                 transform.position = Vector3.Lerp(initialPosition, destination, t);
 
                 yield return null;
             }
         }
-        _isMoving = false;
+
 
         Debug.Log("Piece.MoveRoutine Ended");
     }

@@ -50,6 +50,8 @@ public class Board : MonoBehaviour
     private float _collapsePieceDuration;
     [SerializeField]
     private float _refillPieceDuration;
+    [SerializeField]
+    private float _coroutineFinalPauseDuration;
 
     private void Start()
     {
@@ -98,7 +100,7 @@ public class Board : MonoBehaviour
     public IEnumerator ClearCollapseRefillMatchRoutine(List<Piece> pieces)
     {
         Debug.Log("Board.ClearCollapseRefillMatchRoutine Started");
-        _swapper.SetPlayerCanSwap(false);
+
         List<Piece> piecesToProcess = pieces;
 
         do
@@ -107,7 +109,7 @@ public class Board : MonoBehaviour
 
             yield return StartCoroutine(_clearer.ClearRoutine(this, piecesToProcess));
 
-            yield return StartCoroutine(_bombManager.SpawnBombsRoutine());
+            yield return StartCoroutine(_bombManager.SpawnBombsRoutine(callback => MergePieceLists(callback, ref piecesToProcess)));
 
             yield return StartCoroutine(_collapser.CollpseRoutine(this, piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess)));
 
@@ -118,7 +120,7 @@ public class Board : MonoBehaviour
         while (piecesToProcess.Count != 0);
 
         _swapper.UnsetSwappers(pieces);
-        _swapper.SetPlayerCanSwap(true);
+
         Debug.Log("Board.ClearCollapseRefillMatchRoutine Ended");
     }
 
@@ -195,6 +197,11 @@ public class Board : MonoBehaviour
     public BombManager GetBombManager()
     {
         return _bombManager;
+    }
+
+    public float GetCoroutineFinalPauseDuration()
+    {
+        return _coroutineFinalPauseDuration;
     }
 
     #region hightlight pieces

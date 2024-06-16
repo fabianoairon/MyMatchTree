@@ -70,7 +70,7 @@ public class PiecePlacer : MonoBehaviour
         }
 
         callback(filledPieces);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(board.GetCoroutineFinalPauseDuration());
         Debug.Log("PiecePlacer.RefillRoutine Ended");
     }
 

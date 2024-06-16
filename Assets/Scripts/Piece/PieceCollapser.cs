@@ -21,7 +21,8 @@ public class PieceCollapser : MonoBehaviour
                     {
                         Piece piece = cellGrid[column, j].GetPiece();
                         cellGrid[column, j].SetPiece(null);
-
+                        // criar branch onde vamos transformar tudo isso em IEnumerator pra usar yield return no Move abaixo
+                        // inclusive tirando o metodo intermediário do move, chamar direto a coroutine
                         piece.Move(cellGrid[column, i].GetCoordinate(), MoveType.COLLAPSE);
                         cellGrid[column, i].SetPiece(piece);
                         piece.SetCell(cellGrid[column, i]);
@@ -78,7 +79,7 @@ public class PieceCollapser : MonoBehaviour
 
         callback(movingPieces);
 
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(board.GetCoroutineFinalPauseDuration());
         Debug.Log("PieceCollapser.CollapseRoutine Ended");
     }
 

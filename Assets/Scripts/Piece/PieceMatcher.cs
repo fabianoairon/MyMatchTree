@@ -129,7 +129,7 @@ public class PieceMatcher : MonoBehaviour
         var matches = FindAllMatchesOnListOfPieces(board, pieces);
         OnMatchOccur?.Invoke(matches);
         callback(matches);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(board.GetCoroutineFinalPauseDuration());
         Debug.Log("PieceMatcher.MatchRoutine Ended");
     }
 
