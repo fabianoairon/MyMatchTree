@@ -11,6 +11,7 @@ using System.Linq;
 [RequireComponent(typeof(CellPlacer))]
 [RequireComponent(typeof(CellBreaker))]
 [RequireComponent(typeof(BombManager))]
+[RequireComponent(typeof(DebugLogManager))]
 public class Board : MonoBehaviour
 {
     [Header("Board Dimension")]
@@ -41,6 +42,9 @@ public class Board : MonoBehaviour
 
     [SerializeField]
     private BombManager _bombManager;
+
+    [SerializeField]
+    private DebugLogManager _debugLogManager;
 
     [Header("Durations")]
 
@@ -99,7 +103,7 @@ public class Board : MonoBehaviour
 
     public IEnumerator ClearCollapseRefillMatchRoutine(List<Piece> pieces)
     {
-        Debug.Log("Board.ClearCollapseRefillMatchRoutine Started");
+        if (_debugLogManager.StartAndEndCoroutines) Debug.Log("Board.ClearCollapseRefillMatchRoutine Started");
 
         List<Piece> piecesToProcess = pieces;
 
@@ -121,7 +125,7 @@ public class Board : MonoBehaviour
 
         _swapper.UnsetSwappers(pieces);
 
-        Debug.Log("Board.ClearCollapseRefillMatchRoutine Ended");
+        if (_debugLogManager.StartAndEndCoroutines) Debug.Log("Board.ClearCollapseRefillMatchRoutine Ended");
     }
 
     private void UpdatePieceList(List<Piece> sourceList, ref List<Piece> targetList)
@@ -197,6 +201,11 @@ public class Board : MonoBehaviour
     public BombManager GetBombManager()
     {
         return _bombManager;
+    }
+
+    public DebugLogManager GetDebugLogManager()
+    {
+        return _debugLogManager;
     }
 
     public float GetCoroutineFinalPauseDuration()

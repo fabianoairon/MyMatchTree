@@ -24,7 +24,7 @@ public class Piece : MonoBehaviour
 
     private IEnumerator MoveRoutine(Vector3 destination, MoveType moveType)
     {
-        Debug.Log("Piece.MoveRoutine Started");
+        if (_cell.GetBoard().GetDebugLogManager().StartAndEndCoroutines) Debug.Log("Piece.MoveRoutine Started");
         bool isInDestination = false;
         float currentTime = 0;
         Vector3 initialPosition = transform.position;
@@ -54,7 +54,7 @@ public class Piece : MonoBehaviour
         }
 
 
-        Debug.Log("Piece.MoveRoutine Ended");
+        if (_cell.GetBoard().GetDebugLogManager().StartAndEndCoroutines) Debug.Log("Piece.MoveRoutine Ended");
     }
 
     public void SetPosition(int x, int y, int z = 0, int yOffSet = 0)

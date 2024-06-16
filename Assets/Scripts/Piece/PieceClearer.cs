@@ -23,11 +23,11 @@ public class PieceClearer : MonoBehaviour
 
     public IEnumerator ClearRoutine(Board board, List<Piece> pieces)
     {
-        Debug.Log("PieceCleaner.ClearRoutine Started");
+        if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceCleaner.ClearRoutine Started");
         board.GetClearer().ClearPieceAt(pieces);
         board.GetCellBreaker().BreakBreakableCells(pieces);
 
         yield return new WaitForSeconds(board.GetCoroutineFinalPauseDuration());
-        Debug.Log("PieceCleaner.ClearRoutine Ended");
+        if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceCleaner.ClearRoutine Ended");
     }
 }

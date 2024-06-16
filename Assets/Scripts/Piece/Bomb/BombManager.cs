@@ -110,7 +110,7 @@ public class BombManager : MonoBehaviour
 
     public IEnumerator SpawnBombsRoutine(Action<List<Piece>> callback)
     {
-        Debug.Log("BombManager.SpawnBombsRoutine Started");
+        if (_board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("BombManager.SpawnBombsRoutine Started");
 
         List<Piece> bombsToProcess = new List<Piece>();
 
@@ -126,7 +126,7 @@ public class BombManager : MonoBehaviour
 
         callback(bombsToProcess);
         yield return new WaitForSeconds(_board.GetCoroutineFinalPauseDuration());
-        Debug.Log("BombManager.SpawnBombsRoutine Started");
+        if (_board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("BombManager.SpawnBombsRoutine Started");
     }
 
 }

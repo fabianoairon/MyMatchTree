@@ -125,12 +125,12 @@ public class PieceMatcher : MonoBehaviour
 
     public IEnumerator MatchRoutine(Board board, List<Piece> pieces, Action<List<Piece>> callback)
     {
-        Debug.Log("PieceMatcher.MatchRoutine Started");
+        if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceMatcher.MatchRoutine Started");
         var matches = FindAllMatchesOnListOfPieces(board, pieces);
         OnMatchOccur?.Invoke(matches);
         callback(matches);
         yield return new WaitForSeconds(board.GetCoroutineFinalPauseDuration());
-        Debug.Log("PieceMatcher.MatchRoutine Ended");
+        if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceMatcher.MatchRoutine Ended");
     }
 
 }
