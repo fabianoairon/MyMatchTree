@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(PieceSO))]
-public class PieceSOEditor : Editor
+public class PieceSOInspector : Editor
 {
     public override void OnInspectorGUI()
     {
@@ -16,7 +16,10 @@ public class PieceSOEditor : Editor
 
             if (preview != null)
             {
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.FlexibleSpace();
                 GUILayout.Label(preview, GUILayout.Height(100), GUILayout.Width(100));
+                EditorGUILayout.EndHorizontal();
             }
             else
             {
