@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed7befedf3a57e94fa78ce4c7a77c9da, type: 3}
-  m_Name: GreenPiece
+  m_Name: BlueColumnBomb
   m_EditorClassIdentifier: 
-  _piecePrefab: {fileID: 5693300320421216986, guid: 61d46325b956c744abd7ed5d1fd0a954, type: 3}
-  _pieceColor: 2
+  _piecePrefab: {fileID: 1678704051240615310, guid: 8929e2fde3cb5584b9291ce5d9caeb28, type: 3}
+  _pieceColor: 0

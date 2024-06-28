@@ -6,9 +6,9 @@ public class PieceSOInspector : Editor
 {
     public override void OnInspectorGUI()
     {
+        PieceSO piecesSO = (PieceSO)target;
         DrawDefaultInspector();
 
-        PieceSO piecesSO = (PieceSO)target;
 
         if (piecesSO._piecePrefab != null)
         {

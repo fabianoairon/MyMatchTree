@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed7befedf3a57e94fa78ce4c7a77c9da, type: 3}
-  m_Name: YellowPiece
+  m_Script: {fileID: 11500000, guid: 99c81b33e07ccd24c82d86eb3433a233, type: 3}
+  m_Name: Board Asset
   m_EditorClassIdentifier: 
-  _piecePrefab: {fileID: 1343756193039092930, guid: 7384b118336b6584cbcb5d9fb4e779eb, type: 3}
-  _pieceColor: 3
+  boardWidth: 0
+  boardHeight: 0
+  StartingCellsSet: []
+  StartingPiecesSet: []

@@ -101,14 +101,14 @@ public class PiecePlacer : MonoBehaviour
 
         if (pieceSO == null)
         {
-            gameObject = GetRandomPieceGameObject();
+            gameObject = GetRandomPieceGameObject(board);
         }
         else
         {
-            gameObject = GetPieceGameObjectByPieceSO(pieceSO);
+            gameObject = GetGOPieceByPieceSO(pieceSO, board);
         }
 
-        Piece piece = GetPieceFromInstantiatedGOPiece(gameObject);
+        Piece piece = GetPieceFromGOPiece(gameObject);
         PlacePieceAt(board, cell, piece);
         return piece;
     }
@@ -119,16 +119,17 @@ public class PiecePlacer : MonoBehaviour
         PlacePieceAt(board, cell);
     }
 
-    private GameObject GetRandomPieceGameObject()
+    private GameObject GetRandomPieceGameObject(Board board)
     {
         int randomIndex = UnityEngine.Random.Range(0, _piecesSO.Length);
-        return GetPieceGameObjectByPieceSO(_piecesSO[randomIndex]);
+        return GetGOPieceByPieceSO(_piecesSO[randomIndex], board);
     }
 
-    private GameObject GetPieceGameObjectByPieceSO(PieceSO pieceSO)
+    private GameObject GetGOPieceByPieceSO(PieceSO pieceSO, Board board)
     {
-        Piece piece = GetPieceFromInstantiatedGOPiece(Instantiate(pieceSO._piecePrefab));
+        Piece piece = GetPieceFromGOPiece(Instantiate(pieceSO._piecePrefab));
         piece.SetPieceColor(pieceSO._pieceColor);
+        piece.GetComponent<SpriteRenderer>().color = pieceSO._pieceColor.ToColor(board);
         return piece.gameObject;
     }
 
@@ -136,11 +137,11 @@ public class PiecePlacer : MonoBehaviour
     {
         Cell cell = board.GetCellGrid()[startingPiece.X, startingPiece.Y];
 
-        Piece piece = GetPieceFromInstantiatedGOPiece(GetPieceGameObjectByPieceSO(startingPiece.PieceSO));
+        Piece piece = GetPieceFromGOPiece(GetGOPieceByPieceSO(startingPiece.PieceSO, board));
         PlacePieceAt(board, cell, piece);
     }
 
-    private Piece GetPieceFromInstantiatedGOPiece(GameObject gameObject)
+    private Piece GetPieceFromGOPiece(GameObject gameObject)
     {
         return gameObject.GetComponent<Piece>();
     }

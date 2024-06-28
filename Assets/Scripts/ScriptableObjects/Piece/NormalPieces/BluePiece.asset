@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed7befedf3a57e94fa78ce4c7a77c9da, type: 3}
-  m_Name: RowBomb
+  m_Name: BluePiece
   m_EditorClassIdentifier: 
-  _piecePrefab: {fileID: 1678704051240615310, guid: ea8c09b1f5fbc1d44aff40304853819b, type: 3}
+  _piecePrefab: {fileID: 1678704051240615310, guid: 240a2683c0d4dc34b832cdc074751165, type: 3}
   _pieceColor: 0

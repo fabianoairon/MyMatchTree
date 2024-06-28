@@ -57,6 +57,18 @@ public class Board : MonoBehaviour
     [SerializeField]
     private float _coroutineFinalPauseDuration;
 
+    [Header("Piece Color Values")]
+    [SerializeField]
+    private Color _blue;
+    [SerializeField]
+    private Color _red;
+    [SerializeField]
+    private Color _green;
+    [SerializeField]
+    private Color _yellow;
+    [SerializeField]
+    private Color _lightBlue;
+
     private void Start()
     {
         _allCells = new Cell[_width, _height];
@@ -161,6 +173,31 @@ public class Board : MonoBehaviour
     private int GetYDistanceBetween(Vector3 start, Vector3 end)
     {
         return Mathf.Abs((int)start.y - (int)end.y);
+    }
+
+    public Color GetRed()
+    {
+        return _red;
+    }
+
+    public Color GetBlue()
+    {
+        return _blue;
+    }
+
+    public Color GetGreen()
+    {
+        return _green;
+    }
+
+    public Color GetYellow()
+    {
+        return _yellow;
+    }
+
+    public Color GetLightBlue()
+    {
+        return _lightBlue;
     }
 
     public PiecePlacer GetPiecePlacer()
