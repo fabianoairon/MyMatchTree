@@ -117,10 +117,10 @@ public class Piece : MonoBehaviour
         _isSwapping = isSwapping;
     }
 
-    public Piece SetColorAndSprite(Piece piece, PieceColor pieceColor, Color color)
+    public Piece SetColorAndSprite(Board board, Piece piece, PieceColor pieceColor)
     {
         SetPieceColor(pieceColor);
-        SetPieceSpriteColor(color);
+        SetPieceSpriteColor(pieceColor.ToColor(board));
         return piece;
     }
 }

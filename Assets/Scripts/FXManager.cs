@@ -6,6 +6,8 @@ public class FXManager : MonoBehaviour
     [Header("Script References")]
 
     [SerializeField]
+    private Board _board;
+    [SerializeField]
     private CellBreaker _cellBreaker;
     [SerializeField]
     private PieceClearer _pieceClearer;
@@ -25,7 +27,7 @@ public class FXManager : MonoBehaviour
     private void PieceClearer_OnPieceCleared(Piece piece)
     {
         GameObject pieceClearFX = Instantiate(_pieceClearFXPrefab, new Vector3(piece.GetX(), piece.GetY(), 0), Quaternion.identity);
-        pieceClearFX.GetComponent<Particle>().SetPieceSpriteColor(piece.GetPieceSpriteColor());
+        pieceClearFX.GetComponent<Particle>().SetPieceSpriteColor(piece.GetPieceColor().ToColor(_board));
     }
 
     private void CellBreaker_OnCellBreaker(Cell cell)

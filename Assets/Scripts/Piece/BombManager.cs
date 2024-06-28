@@ -10,14 +10,12 @@ public class BombManager : MonoBehaviour
     {
         public PieceSO BombPieceSO;
         public PieceColor PieceColor;
-        public Color Color;
         public Cell Cell;
 
-        public BombPieceData(PieceSO pieceSO, PieceColor pieceColor, Color color, Cell cell)
+        public BombPieceData(PieceSO pieceSO, PieceColor pieceColor, Cell cell)
         {
             BombPieceSO = pieceSO;
             PieceColor = pieceColor;
-            Color = color;
             Cell = cell;
         }
     }
@@ -98,7 +96,7 @@ public class BombManager : MonoBehaviour
 
         if (matchShape != MatchShape.NONE && pieceSOToSpawn != null)
         {
-            _spawnBombList.Add(new BombPieceData(pieceSOToSpawn, swapperPiece.GetPieceColor(), swapperPiece.GetPieceSpriteColor(), swapperPiece.GetCell()));
+            _spawnBombList.Add(new BombPieceData(pieceSOToSpawn, swapperPiece.GetPieceColor(), swapperPiece.GetCell()));
         }
     }
 
@@ -117,7 +115,7 @@ public class BombManager : MonoBehaviour
         foreach (var bomb in _spawnBombList)
         {
             Piece piece = PlaceBomb(_board, bomb.Cell, bomb.BombPieceSO);
-            piece.SetColorAndSprite(piece, bomb.PieceColor, bomb.Color);
+            piece.SetColorAndSprite(_board, piece, bomb.PieceColor);
 
             bombsToProcess.Add(piece);
         }
@@ -125,6 +123,7 @@ public class BombManager : MonoBehaviour
         _spawnBombList.Clear();
 
         callback(bombsToProcess);
+
         yield return new WaitForSeconds(_board.GetCoroutineFinalPauseDuration());
         if (_board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("BombManager.SpawnBombsRoutine Started");
     }

@@ -350,6 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8c3bc06a380d54a9c57131647de3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _board: {fileID: 34405902}
   _cellBreaker: {fileID: 34405910}
   _pieceClearer: {fileID: 34405905}
   _pieceClearFXPrefab: {fileID: 8056024398336215011, guid: ee9ed0fc0fc913b43976f606037f0c09, type: 3}
