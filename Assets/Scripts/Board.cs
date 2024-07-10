@@ -20,10 +20,11 @@ public class Board : MonoBehaviour
     [SerializeField]
     private int _height;
 
-    private Cell[,] _allCells;
+    [Header("Board Preset")]
+    [SerializeField]
+    private StartingBoardSO _startingBoard;
 
     [Header("Scripts References")]
-
     [SerializeField]
     private CellPlacer _cellPlacer;
     [SerializeField]
@@ -69,8 +70,17 @@ public class Board : MonoBehaviour
     [SerializeField]
     private Color _lightBlue;
 
+
+    private Cell[,] _allCells;
+
     private void Start()
     {
+        if (_startingBoard != null)
+        {
+            _width = _startingBoard.boardWidth;
+            _height = _startingBoard.boardHeight;
+        }
+
         _allCells = new Cell[_width, _height];
         _cellPlacer.GenerateCellGrid(this);
         _piecePlacer.StartFillBoard(this);
@@ -121,7 +131,12 @@ public class Board : MonoBehaviour
 
         do
         {
-            yield return StartCoroutine(_bombManager.PutBombsInRangeToClear(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess)));
+            var lastPiecesSet = new List<Piece>();
+            do
+            {
+                lastPiecesSet = piecesToProcess;
+                yield return StartCoroutine(_bombManager.SeekInBombRangePieces(piecesToProcess, callback => UpdatePieceList(callback, ref piecesToProcess)));
+            } while (lastPiecesSet.Count != piecesToProcess.Count);
 
             yield return StartCoroutine(_clearer.ClearRoutine(this, piecesToProcess));
 
@@ -248,6 +263,24 @@ public class Board : MonoBehaviour
     public float GetCoroutineFinalPauseDuration()
     {
         return _coroutineFinalPauseDuration;
+    }
+
+    public StartingCell[] GetStartingCells()
+    {
+        if (_startingBoard != null)
+        {
+            return _startingBoard.StartingCellsSet;
+        }
+        return null;
+    }
+
+    public StartingPiece[] GetStartingPieces()
+    {
+        if (_startingBoard != null)
+        {
+            return _startingBoard.StartingPiecesSet;
+        }
+        return null;
     }
 
     #region hightlight pieces

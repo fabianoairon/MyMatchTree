@@ -108,15 +108,8 @@ public class PieceMatcher : MonoBehaviour
 
     public bool HasMatchesAt(Board board, int x, int y, int minCount = 3)
     {
-        List<Piece> leftPieces = FindMatches(board, x, y, Vector2.left, minCount);
-        List<Piece> downPieces = FindMatches(board, x, y, Vector2.down, minCount);
-        List<Piece> rightPieces = FindMatches(board, x, y, Vector2.right, minCount);
-        List<Piece> upPieces = FindMatches(board, x, y, Vector2.up, minCount);
-
-        if (leftPieces.Count >= minCount ||
-        downPieces.Count >= minCount ||
-        rightPieces.Count >= minCount ||
-        upPieces.Count >= minCount)
+        if (FindVerticalMatches(board, x, y).Count >= minCount ||
+            FindHorizontalMatches(board, x, y).Count >= minCount)
         {
             return true;
         }
@@ -127,7 +120,9 @@ public class PieceMatcher : MonoBehaviour
     {
         if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceMatcher.MatchRoutine Started");
         var matches = FindAllMatchesOnListOfPieces(board, pieces);
+
         OnMatchOccur?.Invoke(matches);
+
         callback(matches);
         yield return new WaitForSeconds(board.GetCoroutineFinalPauseDuration());
         if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceMatcher.MatchRoutine Ended");

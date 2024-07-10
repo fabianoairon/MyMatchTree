@@ -4,7 +4,6 @@ using UnityEngine;
 public class AreaBomb : Piece, IBombPiece
 {
     private int _areaOffset = 1;
-
     public List<Piece> GetBombedPiecesInRange()
     {
         List<Piece> explodedPieces = new List<Piece>();
@@ -19,11 +18,14 @@ public class AreaBomb : Piece, IBombPiece
             {
                 if (GetCell().GetBoard().IsWithinBounds(i, j))
                 {
-                    explodedPieces.Add(allCells[i, j].GetPiece());
+                    Piece piece = allCells[i, j].GetPiece();
+                    if (piece != null)
+                    {
+                        explodedPieces.Add(piece);
+                    }
                 }
             }
         }
-
         return explodedPieces;
     }
 }

@@ -11,22 +11,22 @@ public enum PieceColor
 
 public static class PieceColorExtensions
 {
-    public static Color ToColor(this PieceColor color, Board board)
+    public static Color ToColor(this PieceColor color)
     {
         switch (color)
         {
             case PieceColor.BLUE:
-                return board.GetBlue();
+                return Color.blue;
             case PieceColor.RED:
-                return board.GetRed();
+                return Color.red;
             case PieceColor.GREEN:
-                return board.GetGreen();
+                return Color.green;
             case PieceColor.YELLOW:
-                return board.GetYellow();
+                return Color.yellow;
             case PieceColor.LIGHT_BLUE:
-                return board.GetLightBlue();
+                return Color.cyan;
             default:
-                return Color.clear;
+                return Color.black;
         }
     }
 }

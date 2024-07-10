@@ -44,20 +44,21 @@ public class BombManager : MonoBehaviour
         GetBombsToSpawn(list);
     }
 
-    public IEnumerator PutBombsInRangeToClear(List<Piece> piecesToProcess, Action<List<Piece>> callback)
+    public IEnumerator SeekInBombRangePieces(List<Piece> piecesToProcess, Action<List<Piece>> callback)
     {
-        List<Piece> bombPieces = piecesToProcess;
+        List<Piece> piecesPlusBombed = piecesToProcess;
 
         foreach (var piece in piecesToProcess)
         {
             if (piece is IBombPiece bombPiece)
             {
-                bombPieces = bombPieces.Union(bombPiece.GetBombedPiecesInRange()).ToList();
+                piecesPlusBombed = piecesPlusBombed.Union(bombPiece.GetBombedPiecesInRange()).ToList();
             }
         }
 
-        callback(bombPieces);
-        yield return new WaitForSeconds(_board.GetCoroutineFinalPauseDuration());
+        callback(piecesPlusBombed);
+        yield return null;
+        // new WaitForSeconds(_board.GetCoroutineFinalPauseDuration());
     }
 
     public void GetBombsToSpawn(List<Piece> piecesToCheckBomb)
@@ -114,8 +115,8 @@ public class BombManager : MonoBehaviour
 
         foreach (var bomb in _spawnBombList)
         {
-            Piece piece = PlaceBomb(_board, bomb.Cell, bomb.BombPieceSO);
-            piece.SetColorAndSprite(_board, piece, bomb.PieceColor);
+            Piece piece = PlaceBomb(_board, _board.GetCellGrid()[(int)bomb.Cell.GetCoordinate().x, (int)bomb.Cell.GetCoordinate().y], bomb.BombPieceSO);
+            piece.SetColorAndSprite(piece, bomb.PieceColor);
 
             bombsToProcess.Add(piece);
         }
@@ -127,5 +128,4 @@ public class BombManager : MonoBehaviour
         yield return new WaitForSeconds(_board.GetCoroutineFinalPauseDuration());
         if (_board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("BombManager.SpawnBombsRoutine Started");
     }
-
 }

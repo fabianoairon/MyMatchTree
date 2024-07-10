@@ -92,11 +92,6 @@ public class Piece : MonoBehaviour
         return _pieceColor;
     }
 
-    public Color GetPieceSpriteColor()
-    {
-        return GetComponent<SpriteRenderer>().color;
-    }
-
     public void SetPieceSpriteColor(Color color)
     {
         GetComponent<SpriteRenderer>().color = color;
@@ -117,10 +112,10 @@ public class Piece : MonoBehaviour
         _isSwapping = isSwapping;
     }
 
-    public Piece SetColorAndSprite(Board board, Piece piece, PieceColor pieceColor)
+    public Piece SetColorAndSprite(Piece piece, PieceColor pieceColor)
     {
         SetPieceColor(pieceColor);
-        SetPieceSpriteColor(pieceColor.ToColor(board));
+        SetPieceSpriteColor(pieceColor.ToColor());
         return piece;
     }
 }

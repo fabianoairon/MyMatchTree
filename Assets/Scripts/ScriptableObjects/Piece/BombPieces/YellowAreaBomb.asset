@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _piecePrefab: {fileID: 1678704051240615310, guid: f112a0366ce60e74fa91b7d2b77a15d2, type: 3}
   _pieceColor: 3
+  _pieceTextureIcon: {fileID: 2800000, guid: c34ceace84947f1419947d0ef3c1dbde, type: 3}

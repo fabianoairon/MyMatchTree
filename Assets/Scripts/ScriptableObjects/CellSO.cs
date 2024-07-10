@@ -5,4 +5,6 @@ public class CellSO : ScriptableObject
 {
     public GameObject _cellPrefab;
     public CellType _cellType;
+    public int _breakableValue;
+    public Texture2D _cellTextureIcon;
 }

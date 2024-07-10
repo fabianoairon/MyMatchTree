@@ -3,10 +3,6 @@ using System.Linq;
 
 public class CellPlacer : MonoBehaviour
 {
-    [Header("Starting Cells")]
-    [SerializeField]
-    private StartingCellsSO _startingCellsSO;
-
     [Header("All Possible Cells")]
     [SerializeField]
     private CellSO[] _cellSO;
@@ -24,9 +20,10 @@ public class CellPlacer : MonoBehaviour
 
     public void GenerateCellGrid(Board board)
     {
-        if (_startingCellsSO != null)
+        var sCells = board.GetStartingCells();
+        if (sCells != null)
         {
-            StartingCellsGenerator(board, _startingCellsSO);
+            StartingCellsGenerator(board, sCells);
         }
 
 
@@ -58,12 +55,12 @@ public class CellPlacer : MonoBehaviour
 
     public Cell PlaceCell(Board board, StartingCell sCell)
     {
-        return PlaceCell(board, sCell.X, sCell.Y, sCell.CellSO._cellType, sCell.InitialBreakablePhase);
+        return PlaceCell(board, sCell.X, sCell.Y, sCell.CellSO._cellType, sCell.CellSO._breakableValue);
     }
 
-    private void StartingCellsGenerator(Board board, StartingCellsSO sCellsSO)
+    private void StartingCellsGenerator(Board board, StartingCell[] sCells)
     {
-        foreach (var cell in sCellsSO.StartingCells)
+        foreach (var cell in sCells)
         {
             if (board.IsWithinBounds(cell.X, cell.Y) && board.GetCellGrid()[cell.X, cell.Y] == null)
             {

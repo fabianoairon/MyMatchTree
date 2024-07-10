@@ -12,7 +12,209 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c81b33e07ccd24c82d86eb3433a233, type: 3}
   m_Name: Board Asset
   m_EditorClassIdentifier: 
-  boardWidth: 0
-  boardHeight: 0
-  StartingCellsSet: []
-  StartingPiecesSet: []
+  boardWidth: 7
+  boardHeight: 9
+  AllPiecesAndCells: {fileID: 11400000, guid: 056ee6303c6b10345bfada06fe188f80, type: 2}
+  StartingCellsSet:
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 8
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 8
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 8
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 8
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 8
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 8
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 8
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 7
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 7
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 7
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 7
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 7
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 7
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 6
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 6
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 6
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 6
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 5
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 5
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 5
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 5
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 5
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 5
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 5
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 4
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 4
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 4
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 4
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 4
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 4
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 4
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 3
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 3
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 3
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 3
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 3
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 3
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 3
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 2
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 2
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 2
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 2
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 2
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 2
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 2
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 1
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 1
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 1
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 1
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 1
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 1
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 1
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 0
+    Y: 0
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 0
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 0
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 0
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 0
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 5
+    Y: 0
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 6
+    Y: 0
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 1
+    Y: 6
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 3
+    Y: 6
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 4
+    Y: 6
+  - CellSO: {fileID: 11400000, guid: aad24569cc7849340a62a87a1ccf4908, type: 2}
+    X: 2
+    Y: 7
+  StartingPiecesSet:
+  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
+    X: 1
+    Y: 6
+  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
+    X: 3
+    Y: 6
+  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
+    X: 4
+    Y: 6
+  - PieceSO: {fileID: 11400000, guid: 7feca1c48f8da594ab0d48c915d58dfe, type: 2}
+    X: 2
+    Y: 7

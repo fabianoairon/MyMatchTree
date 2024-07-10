@@ -6,17 +6,17 @@ using System.Collections.Generic;
 
 public class PiecePlacer : MonoBehaviour
 {
-    [SerializeField]
-    private StartingPiecesSO _startingPiecesSO;
 
     [SerializeField]
     private PieceSO[] _piecesSO;
 
     public void StartFillBoard(Board board, int yOffset = 0)
     {
-        if (_startingPiecesSO != null && _startingPiecesSO.StartingPiecesSet.Count() > 0)
+        var sPieces = board.GetStartingPieces();
+
+        if (sPieces != null && sPieces.Count() > 0)
         {
-            foreach (var sPiece in _startingPiecesSO.StartingPiecesSet)
+            foreach (var sPiece in sPieces)
             {
                 PlaceStartingPieceAt(board, sPiece);
             }
@@ -105,7 +105,7 @@ public class PiecePlacer : MonoBehaviour
         }
         else
         {
-            gameObject = GetGOPieceByPieceSO(pieceSO, board);
+            gameObject = GetGOPieceByPieceSO(pieceSO);
         }
 
         Piece piece = GetPieceFromGOPiece(gameObject);
@@ -122,14 +122,14 @@ public class PiecePlacer : MonoBehaviour
     private GameObject GetRandomPieceGameObject(Board board)
     {
         int randomIndex = UnityEngine.Random.Range(0, _piecesSO.Length);
-        return GetGOPieceByPieceSO(_piecesSO[randomIndex], board);
+        return GetGOPieceByPieceSO(_piecesSO[randomIndex]);
     }
 
-    private GameObject GetGOPieceByPieceSO(PieceSO pieceSO, Board board)
+    private GameObject GetGOPieceByPieceSO(PieceSO pieceSO)
     {
         Piece piece = GetPieceFromGOPiece(Instantiate(pieceSO._piecePrefab));
         piece.SetPieceColor(pieceSO._pieceColor);
-        piece.GetComponent<SpriteRenderer>().color = pieceSO._pieceColor.ToColor(board);
+        piece.GetComponent<SpriteRenderer>().color = pieceSO._pieceColor.ToColor();
         return piece.gameObject;
     }
 
@@ -137,7 +137,7 @@ public class PiecePlacer : MonoBehaviour
     {
         Cell cell = board.GetCellGrid()[startingPiece.X, startingPiece.Y];
 
-        Piece piece = GetPieceFromGOPiece(GetGOPieceByPieceSO(startingPiece.PieceSO, board));
+        Piece piece = GetPieceFromGOPiece(GetGOPieceByPieceSO(startingPiece.PieceSO));
         PlacePieceAt(board, cell, piece);
     }
 

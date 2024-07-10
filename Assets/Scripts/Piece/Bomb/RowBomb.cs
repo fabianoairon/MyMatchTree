@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class RowBomb : Piece, IBombPiece
 {
+
     public List<Piece> GetBombedPiecesInRange()
     {
         List<Piece> explodedPieces = new List<Piece>();
-        int row = GetY(); // row = fileira horizontal = cada fileira está num nivel Y
+        int row = GetY(); // row = linha horizontal = cada fileira está numa coordenada Y
 
         Board board = GetCell().GetBoard();
 
@@ -15,9 +16,12 @@ public class RowBomb : Piece, IBombPiece
 
         for (int i = 0; i < rowPiecesIndex; i++)
         {
-            explodedPieces.Add(allCells[i, row].GetPiece());
+            Piece piece = allCells[i, row].GetPiece();
+            if (piece != null)
+            {
+                explodedPieces.Add(piece);
+            }
         }
-
         return explodedPieces;
     }
 }

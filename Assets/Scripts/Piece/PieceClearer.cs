@@ -21,6 +21,16 @@ public class PieceClearer : MonoBehaviour
         }
     }
 
+    public void ClearAllPiecesAndCells(Board board)
+    {
+        foreach (var cell in board.GetCellGrid())
+        {
+            ClearPieceAt(cell.GetPiece());
+        }
+
+
+    }
+
     public IEnumerator ClearRoutine(Board board, List<Piece> pieces)
     {
         if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceCleaner.ClearRoutine Started");
