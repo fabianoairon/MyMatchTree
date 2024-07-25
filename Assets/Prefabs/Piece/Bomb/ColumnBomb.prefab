@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pieceColor: 0
+  _pieceType: 2
 --- !u!1 &1956684612892922504
 GameObject:
   m_ObjectHideFlags: 0

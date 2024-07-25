@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37bb89a5c7ac17341a8b158b851c905c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _width: 7
-  _height: 9
-  _startingBoard: {fileID: 11400000, guid: dbc6fc60f2fda42458f1c411bd969b1a, type: 2}
+  _width: 3
+  _height: 6
+  _startingBoard: {fileID: 11400000, guid: 36d01d46d27b6b04784aeac6431f0756, type: 2}
   _cellPlacer: {fileID: 34405909}
   _cellBreaker: {fileID: 34405910}
   _swapper: {fileID: 34405906}
@@ -354,6 +354,9 @@ MonoBehaviour:
   _pieceClearer: {fileID: 34405905}
   _pieceClearFXPrefab: {fileID: 8056024398336215011, guid: ee9ed0fc0fc913b43976f606037f0c09, type: 3}
   _cellBreakFXPrefab: {fileID: 2709615595465259344, guid: 45f53934bdfac1640ae51db742dc0240, type: 3}
+  _areaBombFXPrefab: {fileID: 5563279139609222481, guid: 768a92b4c347f3448ac40a5106442699, type: 3}
+  _lineBombFXPrefab: {fileID: 5211723596125564526, guid: 5225101507eba104aa5ee8c8d5e68931, type: 3}
+  _lineBombSpeed: 40
 --- !u!4 &140650016
 Transform:
   m_ObjectHideFlags: 0

@@ -10,6 +10,9 @@ public class Piece : MonoBehaviour
     [SerializeField]
     private PieceColor _pieceColor;
 
+    [SerializeField]
+    private PieceType _pieceType;
+
     public void Move(Vector3 destination, MoveType moveType)
     {
         if (!_isMoving)
@@ -117,5 +120,10 @@ public class Piece : MonoBehaviour
         SetPieceColor(pieceColor);
         SetPieceSpriteColor(pieceColor.ToColor());
         return piece;
+    }
+
+    public PieceType GetPieceType()
+    {
+        return _pieceType;
     }
 }

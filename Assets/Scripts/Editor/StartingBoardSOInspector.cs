@@ -2,6 +2,7 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [CustomEditor(typeof(StartingBoardSO))]
 public class StartingBoardSOInspector : Editor
@@ -115,71 +116,80 @@ public class StartingBoardSOInspector : Editor
                 Debug.Log("Selected Cell: null");
             }
             EditorGUILayout.EndHorizontal();
+
+            EditorGUILayout.LabelField("Board Grid:");
         }
-
-        EditorGUILayout.LabelField("Board Grid:");
-
-        if (startingBoardSO.boardHeight == 0 || startingBoardSO.boardWidth == 0) return;
+        else
+        {
+            EditorGUILayout.HelpBox("Please set \"All Pieces And Cells\" SO to see all possible Pieces and Cells!", MessageType.Warning);
+        }
 
         List<StartingPiece> listStartingPiece = startingBoardSO.StartingPiecesSet.ToList();
         List<StartingCell> listStartingCell = startingBoardSO.StartingCellsSet.ToList();
 
-        for (int i = startingBoardSO.boardHeight - 1; i >= 0; i--)
+        if (startingBoardSO.boardWidth == 0 || startingBoardSO.boardHeight == 0)
         {
-            EditorGUILayout.BeginHorizontal();
-            for (int j = 0; j < startingBoardSO.boardWidth; j++)
+            EditorGUILayout.HelpBox("Both WIDTH and HEIGHT values must be greater than ZERO!", MessageType.Error);
+        }
+        else if (startingBoardSO.boardWidth > 0 || startingBoardSO.boardHeight > 0)
+        {
+            for (int i = startingBoardSO.boardHeight - 1; i >= 0; i--)
             {
-                Rect buttonRect = GUILayoutUtility.GetRect(buttonSize, buttonSize, buttonStyle);
-
-
-                StartingPiece currentPiece = listStartingPiece.FirstOrDefault(p => p.X == j && p.Y == i);
-                StartingCell currentCell = listStartingCell.FirstOrDefault(p => p.X == j && p.Y == i);
-
-                if (GUI.Button(buttonRect, GUIContent.none, buttonStyle))
+                EditorGUILayout.BeginHorizontal();
+                for (int j = 0; j < startingBoardSO.boardWidth; j++)
                 {
-                    if (selectedPiece != null && currentPiece == null)
+                    Rect buttonRect = GUILayoutUtility.GetRect(buttonSize, buttonSize, buttonStyle);
+
+
+                    StartingPiece currentPiece = listStartingPiece.FirstOrDefault(p => p.X == j && p.Y == i);
+                    StartingCell currentCell = listStartingCell.FirstOrDefault(p => p.X == j && p.Y == i);
+
+                    if (GUI.Button(buttonRect, GUIContent.none, buttonStyle))
                     {
-                        listStartingPiece.Add(new StartingPiece(selectedPiece, j, i));
-                    }
-                    else if (selectedPiece != null && currentPiece != null)
-                    {
-                        listStartingPiece.Remove(currentPiece);
-                        listStartingPiece.Add(new StartingPiece(selectedPiece, j, i));
-                    }
-                    else if (selectedPiece == null && currentPiece != null)
-                    {
-                        listStartingPiece.Remove(currentPiece);
-                    }
+                        if (selectedPiece != null && currentPiece == null)
+                        {
+                            listStartingPiece.Add(new StartingPiece(selectedPiece, j, i));
+                        }
+                        else if (selectedPiece != null && currentPiece != null)
+                        {
+                            listStartingPiece.Remove(currentPiece);
+                            listStartingPiece.Add(new StartingPiece(selectedPiece, j, i));
+                        }
+                        else if (selectedPiece == null && currentPiece != null)
+                        {
+                            listStartingPiece.Remove(currentPiece);
+                        }
 
 
 
 
-                    if (selectedCell != null && currentCell == null)
-                    {
-                        listStartingCell.Add(new StartingCell(selectedCell, j, i));
+                        if (selectedCell != null && currentCell == null)
+                        {
+                            listStartingCell.Add(new StartingCell(selectedCell, j, i));
+                        }
+                        else if (selectedCell != null && currentCell != null)
+                        {
+                            listStartingCell.Remove(currentCell);
+                            listStartingCell.Add(new StartingCell(selectedCell, j, i));
+                        }
+                        else if (selectedCell == null && currentCell != null)
+                        {
+                            listStartingCell.Remove(currentCell);
+                        }
                     }
-                    else if (selectedCell != null && currentCell != null)
+
+                    if (currentCell != null)
                     {
-                        listStartingCell.Remove(currentCell);
-                        listStartingCell.Add(new StartingCell(selectedCell, j, i));
+                        GUI.DrawTexture(GUILayoutUtility.GetLastRect(), currentCell.CellSO._cellTextureIcon);
                     }
-                    else if (selectedCell == null && currentCell != null)
+
+                    if (currentPiece != null)
                     {
-                        listStartingCell.Remove(currentCell);
+                        GUI.DrawTexture(GUILayoutUtility.GetLastRect(), currentPiece.PieceSO._pieceTextureIcon);
                     }
                 }
-
-                if (currentCell != null)
-                {
-                    GUI.DrawTexture(GUILayoutUtility.GetLastRect(), currentCell.CellSO._cellTextureIcon);
-                }
-
-                if (currentPiece != null)
-                {
-                    GUI.DrawTexture(GUILayoutUtility.GetLastRect(), currentPiece.PieceSO._pieceTextureIcon);
-                }
+                EditorGUILayout.EndHorizontal();
             }
-            EditorGUILayout.EndHorizontal();
         }
 
         for (int k = listStartingPiece.Count - 1; k >= 0; k--)
