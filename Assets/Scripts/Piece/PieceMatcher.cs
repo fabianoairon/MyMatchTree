@@ -89,7 +89,6 @@ public class PieceMatcher : MonoBehaviour
         {
             matches = matches.Union(FindAllMatchesByPiece(board, piece, minCount)).ToList();
         }
-
         return matches;
     }
 
@@ -104,6 +103,31 @@ public class PieceMatcher : MonoBehaviour
         OnMatchOccur?.Invoke(matchesTwo);
 
         return allMatches;
+    }
+
+    private List<Piece> FindAllPiecesByColor(Board board, PieceColor pieceColor)
+    {
+        List<Piece> allPieceByColor = new List<Piece>();
+        foreach (var cell in board.GetCellGrid())
+        {
+            Piece piece = cell.GetPiece();
+            if (piece.GetPieceColor() == pieceColor)
+            {
+                allPieceByColor.Add(piece);
+            }
+        }
+        return allPieceByColor;
+    }
+
+    private List<Piece> AllBoardMatch(Board board)
+    {
+        Cell[,] cells = board.GetCellGrid();
+        List<Piece> allPieces = new List<Piece>();
+        foreach (var cell in cells)
+        {
+            allPieces.Add(cell.GetPiece());
+        }
+        return allPieces;
     }
 
     public bool HasMatchesAt(Board board, int x, int y, int minCount = 3)
@@ -128,4 +152,42 @@ public class PieceMatcher : MonoBehaviour
         if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceMatcher.MatchRoutine Ended");
     }
 
+    private int HowManyColorBombsOfThese(Piece pieceOne, Piece pieceTwo)
+    {
+        int amount = 0;
+        if (pieceOne is ColorBomb) amount++;
+        if (pieceTwo is ColorBomb) amount++;
+        return amount;
+    }
+
+    private void MakeColorBombTurnInOtherPieceColor(Piece pieceOne, Piece pieceTwo)
+    {
+        if (pieceOne is ColorBomb)
+        {
+            pieceOne.SetPieceColor(pieceTwo.GetPieceColor());
+        }
+        else
+        {
+            pieceTwo.SetPieceColor(pieceOne.GetPieceColor());
+        }
+    }
+
+    public List<Piece> EvaluateMatch(Board board, Piece pieceOne, Piece pieceTwo, int minCount = 3)
+    {
+        int amount = HowManyColorBombsOfThese(pieceOne, pieceTwo);
+
+        if (amount == 2)
+        {
+            return AllBoardMatch(board);
+        }
+        else if (amount > 0)
+        {
+            MakeColorBombTurnInOtherPieceColor(pieceOne, pieceTwo);
+            return FindAllPiecesByColor(board, pieceOne.GetPieceColor());
+        }
+        else
+        {
+            return FindAllMatchesTwoPieces(board, pieceOne, pieceTwo);
+        }
+    }
 }

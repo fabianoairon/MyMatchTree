@@ -3,5 +3,6 @@ public enum PieceType
 	NORMAL,
 	ROW_BOMB,
 	COLUMN_BOMB,
-	AREA_BOMB
+	AREA_BOMB,
+	COLOR_BOMB
 }

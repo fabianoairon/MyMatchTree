@@ -6,7 +6,8 @@ public enum PieceColor
     RED,
     GREEN,
     YELLOW,
-    LIGHT_BLUE
+    LIGHT_BLUE,
+    WILD
 }
 
 public static class PieceColorExtensions

@@ -27,8 +27,6 @@ public class PieceClearer : MonoBehaviour
         {
             ClearPieceAt(cell.GetPiece());
         }
-
-
     }
 
     public IEnumerator ClearRoutine(Board board, List<Piece> pieces)

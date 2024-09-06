@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c81b33e07ccd24c82d86eb3433a233, type: 3}
   m_Name: Test Level
   m_EditorClassIdentifier: 
-  boardWidth: 6
-  boardHeight: 8
+  boardWidth: 7
+  boardHeight: 9
   AllPiecesAndCells: {fileID: 11400000, guid: 056ee6303c6b10345bfada06fe188f80, type: 2}
   StartingCellsSet: []
-  StartingPiecesSet: []
+  StartingPiecesSet:
+  - PieceSO: {fileID: 11400000, guid: 33083337c6b9bda46bd975ab59ea9d9f, type: 2}
+    X: 3
+    Y: 7
+  - PieceSO: {fileID: 11400000, guid: 33083337c6b9bda46bd975ab59ea9d9f, type: 2}
+    X: 4
+    Y: 7

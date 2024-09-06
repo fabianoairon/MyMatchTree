@@ -61,8 +61,9 @@ public class PieceSwapper : MonoBehaviour
 
         yield return new WaitForSeconds(swapDuration);
 
+
         SetSwappers(startPiece, endPiece);
-        var allMatches = board.GetMatcher().FindAllMatchesTwoPieces(board, startPiece, endPiece);
+        var allMatches = board.GetMatcher().EvaluateMatch(board, startPiece, endPiece);
 
         if (allMatches.Count == 0)
         {
