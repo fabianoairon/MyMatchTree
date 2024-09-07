@@ -28,6 +28,8 @@ public class BombManager : MonoBehaviour
     private PieceSO _rowBomb;
     [SerializeField]
     private PieceSO _columnBomb;
+    [SerializeField]
+    private PieceSO _colorBomb;
 
     private List<BombPieceData> _spawnBombList;
 
@@ -72,7 +74,14 @@ public class BombManager : MonoBehaviour
             var horzMatches = _board.GetMatcher().FindHorizontalMatches(_board, piece.GetX(), piece.GetY());
             var vertMatches = _board.GetMatcher().FindVerticalMatches(_board, piece.GetX(), piece.GetY());
 
-            if (horzMatches.Count >= 3 && vertMatches.Count >= 3)
+            if (horzMatches.Count >= 5 || vertMatches.Count >= 5)
+            {
+                swapperPiece = swapperPiece == null ? horzMatches.Count > vertMatches.Count ? horzMatches[0] : vertMatches[0] : swapperPiece;
+                pieceSOToSpawn = _colorBomb;
+                matchShape = MatchShape.FIVE_IN_A_ROW;
+                break;
+            }
+            else if (horzMatches.Count >= 3 && vertMatches.Count >= 3)
             {
                 swapperPiece = swapperPiece == null ? horzMatches.First(p => vertMatches.Contains(p)) : swapperPiece;
                 pieceSOToSpawn = _areaBomb;

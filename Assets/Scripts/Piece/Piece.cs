@@ -97,7 +97,9 @@ public class Piece : MonoBehaviour
 
     public void SetPieceSpriteColor(Color color)
     {
-        GetComponent<SpriteRenderer>().color = color;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer == null) return;
+        spriteRenderer.color = color;
     }
 
     public bool IsMoving()

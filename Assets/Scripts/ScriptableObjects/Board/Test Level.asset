@@ -17,9 +17,18 @@ MonoBehaviour:
   AllPiecesAndCells: {fileID: 11400000, guid: 056ee6303c6b10345bfada06fe188f80, type: 2}
   StartingCellsSet: []
   StartingPiecesSet:
-  - PieceSO: {fileID: 11400000, guid: 33083337c6b9bda46bd975ab59ea9d9f, type: 2}
-    X: 3
-    Y: 7
-  - PieceSO: {fileID: 11400000, guid: 33083337c6b9bda46bd975ab59ea9d9f, type: 2}
+  - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
     X: 4
     Y: 7
+  - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
+    X: 4
+    Y: 6
+  - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
+    X: 4
+    Y: 4
+  - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
+    X: 4
+    Y: 3
+  - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
+    X: 3
+    Y: 5

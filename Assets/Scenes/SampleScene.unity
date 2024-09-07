@@ -306,6 +306,7 @@ MonoBehaviour:
   _areaBomb: {fileID: 11400000, guid: 2805e049b4b66074bb02ea238569745b, type: 2}
   _rowBomb: {fileID: 11400000, guid: f7d3a79c5bc18224195accb901ae6d40, type: 2}
   _columnBomb: {fileID: 11400000, guid: 367d60868b6933244b1dd48e382bf4d6, type: 2}
+  _colorBomb: {fileID: 11400000, guid: 2159a9dde634614408ca08b0a468272d, type: 2}
 --- !u!114 &34405912
 MonoBehaviour:
   m_ObjectHideFlags: 0
