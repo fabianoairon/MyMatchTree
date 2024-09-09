@@ -18,17 +18,32 @@ MonoBehaviour:
   StartingCellsSet: []
   StartingPiecesSet:
   - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
-    X: 4
-    Y: 7
+    X: 1
+    Y: 5
+  - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
+    X: 2
+    Y: 5
   - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
     X: 4
-    Y: 6
+    Y: 5
   - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
-    X: 4
-    Y: 4
-  - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
-    X: 4
-    Y: 3
+    X: 5
+    Y: 5
   - PieceSO: {fileID: 11400000, guid: 1bc7e71de71c10e40b3019b7d9a33b3f, type: 2}
     X: 3
-    Y: 5
+    Y: 6
+  - PieceSO: {fileID: 11400000, guid: f563da862de7a714b90d9e84fd5bdd5e, type: 2}
+    X: 1
+    Y: 1
+  - PieceSO: {fileID: 11400000, guid: f563da862de7a714b90d9e84fd5bdd5e, type: 2}
+    X: 2
+    Y: 1
+  - PieceSO: {fileID: 11400000, guid: f563da862de7a714b90d9e84fd5bdd5e, type: 2}
+    X: 3
+    Y: 2
+  - PieceSO: {fileID: 11400000, guid: f563da862de7a714b90d9e84fd5bdd5e, type: 2}
+    X: 4
+    Y: 1
+  - PieceSO: {fileID: 11400000, guid: f563da862de7a714b90d9e84fd5bdd5e, type: 2}
+    X: 5
+    Y: 1

@@ -130,6 +130,7 @@ public class PiecePlacer : MonoBehaviour
         Piece piece = GetPieceFromGOPiece(Instantiate(pieceSO._piecePrefab));
 
         piece.SetPieceColor(pieceSO._pieceColor);
+
         if (!(piece is ColorBomb))
         {
             piece.GetComponent<SpriteRenderer>().color = pieceSO._pieceColor.ToColor();

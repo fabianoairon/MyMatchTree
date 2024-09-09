@@ -119,6 +119,8 @@ public class Piece : MonoBehaviour
 
     public Piece SetColorAndSprite(Piece piece, PieceColor pieceColor)
     {
+        if (pieceColor == PieceColor.WILD) return piece;
+
         SetPieceColor(pieceColor);
         SetPieceSpriteColor(pieceColor.ToColor());
         return piece;

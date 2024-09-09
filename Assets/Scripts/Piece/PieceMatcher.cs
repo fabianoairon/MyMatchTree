@@ -34,7 +34,7 @@ public class PieceMatcher : MonoBehaviour
 
             Piece nextPiece = allCells[nextX, nextY].GetPiece();
 
-            if (nextPiece != null && piece.GetPieceColor() == nextPiece.GetPieceColor())
+            if (nextPiece != null && CanMatch(piece, nextPiece))
             {
                 matchPieces.Add(nextPiece);
             }
@@ -45,6 +45,13 @@ public class PieceMatcher : MonoBehaviour
         }
 
         return matchPieces.Count >= minCount ? matchPieces : new List<Piece>();
+    }
+
+    private bool CanMatch(Piece piece, Piece nextPiece)
+    {
+        return piece.GetPieceColor() != PieceColor.WILD &&
+        nextPiece.GetPieceColor() != PieceColor.WILD &&
+        piece.GetPieceColor() == nextPiece.GetPieceColor();
     }
 
     public List<Piece> FindHorizontalMatches(Board board, int startX, int startY, int minCount = 3)

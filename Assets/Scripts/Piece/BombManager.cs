@@ -106,7 +106,18 @@ public class BombManager : MonoBehaviour
 
         if (matchShape != MatchShape.NONE && pieceSOToSpawn != null)
         {
-            _spawnBombList.Add(new BombPieceData(pieceSOToSpawn, swapperPiece.GetPieceColor(), swapperPiece.GetCell()));
+            PieceColor pieceColor;
+
+            if (pieceSOToSpawn._piecePrefab.TryGetComponent(out ColorBomb colorBomb))
+            {
+                pieceColor = PieceColor.WILD;
+            }
+            else
+            {
+                pieceColor = swapperPiece.GetPieceColor();
+            }
+
+            _spawnBombList.Add(new BombPieceData(pieceSOToSpawn, pieceColor, swapperPiece.GetCell()));
         }
     }
 
