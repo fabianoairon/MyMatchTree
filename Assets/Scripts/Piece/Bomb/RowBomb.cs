@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class RowBomb : Piece, IBombPiece
 {
-
     public List<Piece> GetBombedPiecesInRange()
     {
         List<Piece> explodedPieces = new List<Piece>();
@@ -20,6 +19,11 @@ public class RowBomb : Piece, IBombPiece
             if (piece != null)
             {
                 explodedPieces.Add(piece);
+
+                if (piece is IBombPiece)
+                {
+                    piece.SetPieceColor(GetPieceColor());
+                }
             }
         }
         return explodedPieces;

@@ -112,7 +112,7 @@ public class PieceMatcher : MonoBehaviour
         return allMatches;
     }
 
-    private List<Piece> FindAllPiecesByColor(Board board, PieceColor pieceColor)
+    public List<Piece> FindAllPiecesByColor(Board board, PieceColor pieceColor)
     {
         List<Piece> allPieceByColor = new List<Piece>();
         foreach (var cell in board.GetCellGrid())
@@ -159,7 +159,7 @@ public class PieceMatcher : MonoBehaviour
         if (board.GetDebugLogManager().StartAndEndCoroutines) Debug.Log("PieceMatcher.MatchRoutine Ended");
     }
 
-    private int HowManyColorBombsOfThese(Piece pieceOne, Piece pieceTwo)
+    private int HowManyColorBombsBetweenThese(Piece pieceOne, Piece pieceTwo)
     {
         int amount = 0;
         if (pieceOne is ColorBomb) amount++;
@@ -181,7 +181,7 @@ public class PieceMatcher : MonoBehaviour
 
     public List<Piece> EvaluateMatch(Board board, Piece pieceOne, Piece pieceTwo, int minCount = 3)
     {
-        int amount = HowManyColorBombsOfThese(pieceOne, pieceTwo);
+        int amount = HowManyColorBombsBetweenThese(pieceOne, pieceTwo);
 
         if (amount == 2)
         {

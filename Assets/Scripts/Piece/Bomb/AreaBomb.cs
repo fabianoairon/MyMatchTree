@@ -22,6 +22,11 @@ public class AreaBomb : Piece, IBombPiece
                     if (piece != null)
                     {
                         explodedPieces.Add(piece);
+
+                        if (piece is IBombPiece)
+                        {
+                            piece.SetPieceColor(GetPieceColor());
+                        }
                     }
                 }
             }

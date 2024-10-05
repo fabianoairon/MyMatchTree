@@ -1,16 +1,18 @@
 using System.Collections.Generic;
-using UnityEngine;
+using System.Linq;
 
 public class ColorBomb : Piece, IBombPiece
 {
     public List<Piece> GetBombedPiecesInRange()
     {
         List<Piece> bombedPieces = new List<Piece>();
-        return bombedPieces;
-    }
 
-    public void SetSelfColorFromAnotherPiece(Piece anotherPiece)
-    {
-        SetPieceColor(anotherPiece.GetPieceColor());
+        if (GetPieceColor() != PieceColor.WILD)
+        {
+            Board board = GetCell().GetBoard();
+            bombedPieces = bombedPieces.Union(board.GetMatcher().FindAllPiecesByColor(board, GetPieceColor())).ToList();
+        }
+
+        return bombedPieces;
     }
 }

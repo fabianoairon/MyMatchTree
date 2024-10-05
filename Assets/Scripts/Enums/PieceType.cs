@@ -4,5 +4,6 @@ public enum PieceType
 	ROW_BOMB,
 	COLUMN_BOMB,
 	AREA_BOMB,
-	COLOR_BOMB
+	COLOR_BOMB,
+	COLLECTABLE
 }

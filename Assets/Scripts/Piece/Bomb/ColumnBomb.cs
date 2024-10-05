@@ -2,7 +2,6 @@ using System.Collections.Generic;
 
 public class ColumnBomb : Piece, IBombPiece
 {
-
     public List<Piece> GetBombedPiecesInRange()
     {
         List<Piece> explodedPieces = new List<Piece>();
@@ -19,6 +18,11 @@ public class ColumnBomb : Piece, IBombPiece
             if (piece != null)
             {
                 explodedPieces.Add(piece);
+
+                if (piece is IBombPiece)
+                {
+                    piece.SetPieceColor(GetPieceColor());
+                }
             }
         }
         return explodedPieces;
